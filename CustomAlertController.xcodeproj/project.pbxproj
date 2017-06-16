@@ -12,9 +12,9 @@
 		1E17EC4D1EF3E9EE00C052E9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E17EC4B1EF3E9EE00C052E9 /* Main.storyboard */; };
 		1E17EC4F1EF3E9EE00C052E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E17EC4E1EF3E9EE00C052E9 /* Assets.xcassets */; };
 		1E17EC521EF3E9EE00C052E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E17EC501EF3E9EE00C052E9 /* LaunchScreen.storyboard */; };
-		1E17EC5A1EF3EA1000C052E9 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E17EC591EF3EA1000C052E9 /* Utils.swift */; };
-		1E17EC5C1EF3EA6000C052E9 /* FLWCustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E17EC5B1EF3EA6000C052E9 /* FLWCustomButton.swift */; };
-		1E17EC5E1EF3EA6700C052E9 /* FLWAlertController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E17EC5D1EF3EA6700C052E9 /* FLWAlertController.xib */; };
+		1E17EC5A1EF3EA1000C052E9 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E17EC591EF3EA1000C052E9 /* AlertController.swift */; };
+		1E17EC5C1EF3EA6000C052E9 /* AlertButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E17EC5B1EF3EA6000C052E9 /* AlertButton.swift */; };
+		1E17EC5E1EF3EA6700C052E9 /* AlertController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E17EC5D1EF3EA6700C052E9 /* AlertController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,9 +25,9 @@
 		1E17EC4E1EF3E9EE00C052E9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1E17EC511EF3E9EE00C052E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1E17EC531EF3E9EE00C052E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1E17EC591EF3EA1000C052E9 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
-		1E17EC5B1EF3EA6000C052E9 /* FLWCustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FLWCustomButton.swift; sourceTree = "<group>"; };
-		1E17EC5D1EF3EA6700C052E9 /* FLWAlertController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLWAlertController.xib; sourceTree = "<group>"; };
+		1E17EC591EF3EA1000C052E9 /* AlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
+		1E17EC5B1EF3EA6000C052E9 /* AlertButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertButton.swift; sourceTree = "<group>"; };
+		1E17EC5D1EF3EA6700C052E9 /* AlertController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,9 +62,9 @@
 			children = (
 				1E17EC471EF3E9EE00C052E9 /* AppDelegate.swift */,
 				1E17EC491EF3E9EE00C052E9 /* ViewController.swift */,
-				1E17EC591EF3EA1000C052E9 /* Utils.swift */,
-				1E17EC5B1EF3EA6000C052E9 /* FLWCustomButton.swift */,
-				1E17EC5D1EF3EA6700C052E9 /* FLWAlertController.xib */,
+				1E17EC591EF3EA1000C052E9 /* AlertController.swift */,
+				1E17EC5B1EF3EA6000C052E9 /* AlertButton.swift */,
+				1E17EC5D1EF3EA6700C052E9 /* AlertController.xib */,
 				1E17EC4B1EF3E9EE00C052E9 /* Main.storyboard */,
 				1E17EC4E1EF3E9EE00C052E9 /* Assets.xcassets */,
 				1E17EC501EF3E9EE00C052E9 /* LaunchScreen.storyboard */,
@@ -133,7 +133,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1E17EC5E1EF3EA6700C052E9 /* FLWAlertController.xib in Resources */,
+				1E17EC5E1EF3EA6700C052E9 /* AlertController.xib in Resources */,
 				1E17EC521EF3E9EE00C052E9 /* LaunchScreen.storyboard in Resources */,
 				1E17EC4F1EF3E9EE00C052E9 /* Assets.xcassets in Resources */,
 				1E17EC4D1EF3E9EE00C052E9 /* Main.storyboard in Resources */,
@@ -147,10 +147,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1E17EC5C1EF3EA6000C052E9 /* FLWCustomButton.swift in Sources */,
+				1E17EC5C1EF3EA6000C052E9 /* AlertButton.swift in Sources */,
 				1E17EC4A1EF3E9EE00C052E9 /* ViewController.swift in Sources */,
 				1E17EC481EF3E9EE00C052E9 /* AppDelegate.swift in Sources */,
-				1E17EC5A1EF3EA1000C052E9 /* Utils.swift in Sources */,
+				1E17EC5A1EF3EA1000C052E9 /* AlertController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,6 +314,7 @@
 				1E17EC581EF3E9EE00C052E9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

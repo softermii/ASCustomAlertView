@@ -8,13 +8,12 @@
 
 import UIKit
 
-class FLWCustomButton : UIButton {
-    
-    var action: (()->Void)?
+class AlertButton : UIButton {
+    var action: (() -> Void)?
     var text: String = "Ok"
     
     init() {
-        super.init(frame:CGRect())
+        super.init(frame:.zero)
         localInit()
     }
     
@@ -23,18 +22,17 @@ class FLWCustomButton : UIButton {
         localInit()
     }
     
-    private func localInit() {
-        self.setTitle(text, for: .normal)
-        addTarget(self, action:#selector(FLWCustomButton.buttonTapped(_:)), for:.touchUpInside)
+    public func setup(with title: String) {
+        setTitle(text, for: .normal)
     }
     
-    func buttonTapped(_ btn: FLWCustomButton) {
-        if let action = action {
-            action()
-        }
+    private func localInit() {
+        addTarget(self, action:#selector(AlertButton.buttonTapped(_:)), for:.touchUpInside)
     }
-
-
+    
+    @objc fileprivate func buttonTapped(_ btn: AlertButton) {
+        action?()
+    }
 }
     
 
