@@ -16,11 +16,22 @@ class ViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+    }
+    
+    
+   @IBAction func createAlert() {
         showSuccessAlert(with: "title",
                          message: "message",
                          buttons: [("dismiss", {
-                            print("button tapped")
+                            self.dismiss(animated: false, completion: {
+                                
+                                UIView.animate(withDuration: 0.3, animations: {
+                                   // self.view.alpha = 0.3
+                                }, completion: { (_) in
+                                    self.view.backgroundColor = UIColor.white.withAlphaComponent(1)
+                                })
+                                
+                            })
                          })
             ])
     }

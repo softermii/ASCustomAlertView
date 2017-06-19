@@ -15,23 +15,30 @@ extension UIViewController {
     
     func showSuccessAlert(with title: String, message: String, buttons: [(String, (Void) -> Void)]?) {
         let vc = AlertController.makeAlert(title: title, message: message, buttons: buttons, labels: [title, message])
-        
-        springAnimation(with: (view.window?.layer)!)
-        
+    
         self.present(vc, animated: false) {
-            self.view.layer.removeAllAnimations()
+            
+            UIView.animate(withDuration: 0.2, animations: {
+                self.view.backgroundColor = UIColor.black.withAlphaComponent(0)
+            }, completion: { (success) in
+                self.view.backgroundColor = UIColor.black.withAlphaComponent(0.1)
+            })
+
+          
+            
         }
     }
     
     
     func springAnimation(with layer: CALayer) {
-        let spring = CASpringAnimation(keyPath: "position.x")
-        spring.damping = 2
-        spring.initialVelocity = 50
-        spring.fromValue = (view.window?.layer.position.x)! - 2
-        spring.toValue = view.window?.layer.position.x
-        spring.duration = spring.settlingDuration
-        layer.add(spring, forKey: "rotate")
+        let anim = CASpringAnimation(keyPath: "opacity")
+        anim.duration = 2
+        //anim.fromValue = 0
+        anim.toValue = 0.3
+        anim.autoreverses = false
+        anim.isRemovedOnCompletion = false
+        anim.fillMode = kCAFillModeForwards
+        layer.add(anim, forKey: "myOpacity")
     }
    
 }
@@ -47,7 +54,7 @@ class AlertController: UIViewController {
     convenience init() {
         self.init(nibName: String.init(describing: AlertController.self), bundle: Bundle.main)
         self.modalPresentationStyle = .overCurrentContext
-        self.modalTransitionStyle = .crossDissolve
+        self.modalTransitionStyle = .coverVertical
     }
     
     override func loadView() {
@@ -68,18 +75,20 @@ class AlertController: UIViewController {
                 break
             }
         }
+
+        self.view.backgroundColor = UIColor.black.withAlphaComponent(0)
         
-               
-        self.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+        containerView.layer.cornerRadius = 4
+        containerView.clipsToBounds = true
     }
     
     static public func makeAlert(title: String?, message: String?, buttons: [(String, (Void) -> Void)]?, labels: [String]) -> AlertController {
         let alert = AlertController()
-        
+
         guard let b = buttons else { return alert }
         b.forEach { alert.controls.append(getButton(text: $0.0, action: $0.1)) }
         labels.forEach { alert.controls.append(getLabel(text: setAttributedText(text: $0))) }
-        
+
         return alert
     }
     
@@ -99,18 +108,20 @@ class AlertController: UIViewController {
         return button
     }
     
-    static private func setAttributedText (text: String) -> NSAttributedString {
-        let attributes = [NSFontAttributeName : UIFont.init(name: "Verdana", size: 15), NSForegroundColorAttributeName: UIColor.darkGray]
-        return NSAttributedString.init(string: text, attributes: attributes as! [String : NSObject])
-    }
-    
-    
     static func getLabel(text: NSAttributedString) -> UILabel {
         let label = UILabel()
         label.attributedText = text
         return label
     }
 
+    
+    static private func setAttributedText (text: String) -> NSAttributedString {
+        let attributes = [NSFontAttributeName : UIFont.init(name: "Verdana", size: 15), NSForegroundColorAttributeName: UIColor.darkGray]
+        return NSAttributedString.init(string: text, attributes: attributes as! [String : NSObject])
+    }
+    
+    
+    
 }
 
 
