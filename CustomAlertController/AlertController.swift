@@ -12,14 +12,22 @@ import UIKit
 extension UIViewController {
     
     func showSuccessAlert(with title: String, message: String, buttons: [(String, (Void) -> Void)]?) {
-        let vc = AlertController.makeAlert(title: title, message: message, buttons: buttons)
-        self.present(vc, animated: true, completion: nil)
+        let vc = AlertController.makeAlert(title: title, message: message, buttons: buttons, labels: [title, message])
+        UIView.transition(with: vc.view, duration: 0.5, options: .beginFromCurrentState, animations: {
+            self.present(vc, animated: true, completion: nil)
+        }) { (success) in
+            
+            print("finished")
+        }
+        
     }
    
 }
 
 class AlertController: UIViewController {
+    
     @IBOutlet weak var buttonsStack: UIStackView!
+    @IBOutlet weak var labelsStack: UIStackView!
     @IBOutlet var containerView: UIView!
     
     private var controls:[UIView] = [UIView]()
@@ -28,6 +36,8 @@ class AlertController: UIViewController {
         self.init(nibName: String.init(describing: AlertController.self), bundle: Bundle.main)
         self.modalPresentationStyle = .overCurrentContext
         self.modalTransitionStyle = .crossDissolve
+
+
     }
     
     override func loadView() {
@@ -38,18 +48,27 @@ class AlertController: UIViewController {
     private func internalLoadViews() {
         self.containerView.clipsToBounds = true
         
-        for control in controls {
-            buttonsStack.addArrangedSubview(control)
+        controls.forEach { element in
+            switch element {
+            case let x where element is UILabel:
+                labelsStack.addArrangedSubview(x)
+            case let x where element is AlertButton:
+                 buttonsStack.addArrangedSubview(x)
+            default:
+                break
+            }
         }
         
+               
         self.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
     }
     
-    static public func makeAlert(title: String?, message: String?, buttons: [(String, (Void) -> Void)]?) -> AlertController {
+    static public func makeAlert(title: String?, message: String?, buttons: [(String, (Void) -> Void)]?, labels: [String]) -> AlertController {
         let alert = AlertController()
         
         guard let b = buttons else { return alert }
         b.forEach { alert.controls.append(getButton(text: $0.0, action: $0.1)) }
+        labels.forEach { alert.controls.append(getLabel(text: setAttributedText(text: $0))) }
         
         return alert
     }
@@ -69,6 +88,19 @@ class AlertController: UIViewController {
         
         return button
     }
+    
+    static private func setAttributedText (text: String) -> NSAttributedString {
+        let attributes = [NSFontAttributeName : UIFont.init(name: "Verdana", size: 15), NSForegroundColorAttributeName: UIColor.darkGray]
+        return NSAttributedString.init(string: text, attributes: attributes as! [String : NSObject])
+    }
+    
+    
+    static func getLabel(text: NSAttributedString) -> UILabel {
+        let label = UILabel()
+        label.attributedText = text
+        return label
+    }
+
 }
 
 

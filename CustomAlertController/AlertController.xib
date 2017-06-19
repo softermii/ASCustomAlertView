@@ -13,6 +13,7 @@
             <connections>
                 <outlet property="buttonsStack" destination="Cmi-M1-4tT" id="lXG-Se-rSC"/>
                 <outlet property="containerView" destination="fRe-vj-gOo" id="gSV-2q-MEd"/>
+                <outlet property="labelsStack" destination="U7v-ZX-mT7" id="tPC-A3-rC5"/>
                 <outlet property="view" destination="iN0-l3-epB" id="chU-o4-yob"/>
             </connections>
         </placeholder>
@@ -30,16 +31,16 @@
                     <blurEffect style="light"/>
                 </visualEffectView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fRe-vj-gOo">
-                    <rect key="frame" x="24" y="-22" width="327" height="266"/>
+                    <rect key="frame" x="24" y="-27" width="327" height="276"/>
                     <subviews>
-                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ayf-PP-A2y">
-                            <rect key="frame" x="0.0" y="0.0" width="327" height="266"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ayf-PP-A2y">
+                            <rect key="frame" x="0.0" y="0.0" width="327" height="276"/>
                             <subviews>
-                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="U7v-ZX-mT7">
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="U7v-ZX-mT7">
                                     <rect key="frame" x="8" y="8" width="311" height="200"/>
                                 </stackView>
                                 <stackView contentMode="scaleToFill" distribution="fillEqually" alignment="bottom" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Cmi-M1-4tT">
-                                    <rect key="frame" x="8" y="208" width="311" height="50"/>
+                                    <rect key="frame" x="8" y="218" width="311" height="50"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </stackView>
                             </subviews>
