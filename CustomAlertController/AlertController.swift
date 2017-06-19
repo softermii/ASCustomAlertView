@@ -9,17 +9,29 @@
 import Foundation
 import UIKit
 
+
+
 extension UIViewController {
     
     func showSuccessAlert(with title: String, message: String, buttons: [(String, (Void) -> Void)]?) {
         let vc = AlertController.makeAlert(title: title, message: message, buttons: buttons, labels: [title, message])
-        UIView.transition(with: vc.view, duration: 0.5, options: .beginFromCurrentState, animations: {
-            self.present(vc, animated: true, completion: nil)
-        }) { (success) in
-            
-            print("finished")
-        }
         
+        springAnimation(with: (view.window?.layer)!)
+        
+        self.present(vc, animated: false) {
+            self.view.layer.removeAllAnimations()
+        }
+    }
+    
+    
+    func springAnimation(with layer: CALayer) {
+        let spring = CASpringAnimation(keyPath: "position.x")
+        spring.damping = 2
+        spring.initialVelocity = 50
+        spring.fromValue = (view.window?.layer.position.x)! - 2
+        spring.toValue = view.window?.layer.position.x
+        spring.duration = spring.settlingDuration
+        layer.add(spring, forKey: "rotate")
     }
    
 }
@@ -36,8 +48,6 @@ class AlertController: UIViewController {
         self.init(nibName: String.init(describing: AlertController.self), bundle: Bundle.main)
         self.modalPresentationStyle = .overCurrentContext
         self.modalTransitionStyle = .crossDissolve
-
-
     }
     
     override func loadView() {
