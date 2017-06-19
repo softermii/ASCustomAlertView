@@ -23,17 +23,9 @@ class ViewController: UIViewController {
         showSuccessAlert(with: "title",
                          message: "message",
                          buttons: [("dismiss", {
-                            self.dismiss(animated: false, completion: {
-                                
-                                UIView.animate(withDuration: 0.3, animations: {
-                                   // self.view.alpha = 0.3
-                                }, completion: { (_) in
-                                    self.view.backgroundColor = UIColor.white.withAlphaComponent(1)
-                                })
-                                
-                            })
+                            self.dismissController(controller: self)
                          })
-            ])
+        ])
     }
 
 }

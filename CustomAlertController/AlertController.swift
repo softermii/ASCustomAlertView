@@ -13,34 +13,32 @@ import UIKit
 
 extension UIViewController {
     
+    
+    public func dismissController(controller: UIViewController) {
+        
+        controller.parent?.modalTransitionStyle = .crossDissolve
+        
+        controller.dismiss(animated: false) {
+            UIView.animate(withDuration: 0.5, animations: { [weak self] in
+                self?.view.backgroundColor = UIColor.white.withAlphaComponent(1)
+            })
+        }
+    }
+    
     func showSuccessAlert(with title: String, message: String, buttons: [(String, (Void) -> Void)]?) {
         let vc = AlertController.makeAlert(title: title, message: message, buttons: buttons, labels: [title, message])
     
         self.present(vc, animated: false) {
-            
-            UIView.animate(withDuration: 0.2, animations: {
-                self.view.backgroundColor = UIColor.black.withAlphaComponent(0)
+            self.parent?.modalTransitionStyle = .crossDissolve
+        
+            UIView.animate(withDuration: 0.2, animations: { [weak self] in
+                self?.view.backgroundColor = UIColor.black.withAlphaComponent(0)
             }, completion: { (success) in
                 self.view.backgroundColor = UIColor.black.withAlphaComponent(0.1)
             })
-
-          
-            
         }
     }
     
-    
-    func springAnimation(with layer: CALayer) {
-        let anim = CASpringAnimation(keyPath: "opacity")
-        anim.duration = 2
-        //anim.fromValue = 0
-        anim.toValue = 0.3
-        anim.autoreverses = false
-        anim.isRemovedOnCompletion = false
-        anim.fillMode = kCAFillModeForwards
-        layer.add(anim, forKey: "myOpacity")
-    }
-   
 }
 
 class AlertController: UIViewController {
