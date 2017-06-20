@@ -29,15 +29,28 @@ extension UIViewController {
         let vc = AlertController.makeAlert(title: title, message: message, buttons: buttons, labels: [title, message])
     
         self.present(vc, animated: false) {
-            self.parent?.modalTransitionStyle = .crossDissolve
-        
-            UIView.animate(withDuration: 0.2, animations: { [weak self] in
+            self.parent?.modalTransitionStyle = .coverVertical
+                UIView.animate(withDuration: 0.2, animations: { [weak self] in
                 self?.view.backgroundColor = UIColor.black.withAlphaComponent(0)
+                    self?.setupSpringAnimation(with: (vc.containerView.layer))
             }, completion: { (success) in
                 self.view.backgroundColor = UIColor.black.withAlphaComponent(0.1)
             })
         }
     }
+    
+    
+    private func setupSpringAnimation(with layer: CALayer) {
+        let anim = CASpringAnimation(keyPath: "transform.rotation")
+        anim.fromValue = 0.3
+        anim.toValue = 0
+        anim.damping = 5
+        anim.speed = 3
+        anim.initialVelocity = 10
+        anim.duration = 1
+        layer.add(anim, forKey: "mySpring")
+    }
+
     
 }
 
@@ -53,6 +66,7 @@ class AlertController: UIViewController {
         self.init(nibName: String.init(describing: AlertController.self), bundle: Bundle.main)
         self.modalPresentationStyle = .overCurrentContext
         self.modalTransitionStyle = .coverVertical
+
     }
     
     override func loadView() {
@@ -117,6 +131,7 @@ class AlertController: UIViewController {
         let attributes = [NSFontAttributeName : UIFont.init(name: "Verdana", size: 15), NSForegroundColorAttributeName: UIColor.darkGray]
         return NSAttributedString.init(string: text, attributes: attributes as! [String : NSObject])
     }
+    
     
     
     
