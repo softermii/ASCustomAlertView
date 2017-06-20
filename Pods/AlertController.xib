@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G16b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AlertController" customModule="CustomAlertController" customModuleProvider="target">
+            <connections>
+                <outlet property="buttonsStack" destination="Cmi-M1-4tT" id="lXG-Se-rSC"/>
+                <outlet property="containerView" destination="fRe-vj-gOo" id="gSV-2q-MEd"/>
+                <outlet property="labelsStack" destination="U7v-ZX-mT7" id="tPC-A3-rC5"/>
+                <outlet property="view" destination="iN0-l3-epB" id="chU-o4-yob"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view opaque="NO" contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="222"/>
+            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YDX-lD-YMV">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="222"/>
+                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="7i8-R8-Cwm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="222"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    </view>
+                    <blurEffect style="light"/>
+                </visualEffectView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fRe-vj-gOo">
+                    <rect key="frame" x="24" y="-27" width="327" height="276"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ayf-PP-A2y">
+                            <rect key="frame" x="0.0" y="0.0" width="327" height="276"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="U7v-ZX-mT7">
+                                    <rect key="frame" x="8" y="8" width="311" height="200"/>
+                                </stackView>
+                                <stackView contentMode="scaleToFill" distribution="fillEqually" alignment="bottom" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Cmi-M1-4tT">
+                                    <rect key="frame" x="8" y="218" width="311" height="50"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </stackView>
+                            </subviews>
+                            <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" id="EnJ-1H-C2A"/>
+                        <constraint firstAttribute="bottom" secondItem="ayf-PP-A2y" secondAttribute="bottom" id="ISg-3E-a7j"/>
+                        <constraint firstItem="ayf-PP-A2y" firstAttribute="top" secondItem="fRe-vj-gOo" secondAttribute="top" id="Kur-dm-6pC"/>
+                        <constraint firstAttribute="trailing" secondItem="ayf-PP-A2y" secondAttribute="trailing" id="jrK-lt-RwP"/>
+                        <constraint firstAttribute="height" priority="250" id="kIr-fr-zvL"/>
+                        <constraint firstItem="ayf-PP-A2y" firstAttribute="leading" secondItem="fRe-vj-gOo" secondAttribute="leading" id="mKU-qN-VJ4"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="YDX-lD-YMV" secondAttribute="bottom" id="2dl-74-0RI"/>
+                <constraint firstAttribute="trailing" secondItem="YDX-lD-YMV" secondAttribute="trailing" id="7pe-KG-udx"/>
+                <constraint firstItem="fRe-vj-gOo" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="24" id="A5w-Nh-scl"/>
+                <constraint firstItem="fRe-vj-gOo" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Bhw-al-jgT"/>
+                <constraint firstItem="YDX-lD-YMV" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="HWc-yD-Kxk"/>
+                <constraint firstItem="fRe-vj-gOo" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="eIv-0l-8MY"/>
+                <constraint firstItem="YDX-lD-YMV" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ztt-2G-CBb"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="33.5" y="82"/>
+        </view>
+    </objects>
+</document>
