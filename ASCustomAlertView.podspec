@@ -7,11 +7,12 @@ Pod::Spec.new do |s|
   s.documentation_url           = 'http://softermii.com'
   s.author                      = { 'Anton Stremovskiy'   => 'perlik@gmail.com',
                                     'Max Rachytskyy'     => 'maksym.rachytskyy@softermii.com' }
-  s.license                     = 'MIT'
+  s.license                     = { :type => "MIT", :file => "LICENSE" }
   s.source                      = { git: "https://github.com/antons81/ASCustomAlertView.git", tag: "v#{s.version}" }
   s.platform                    = :ios, '9.0'
   s.requires_arc                = true
-  s.source_files                = '**/Pods/*'
+  s.source_files                = 'Pods/*.{swift, xib}', '*.xib'
   s.ios.frameworks              = %w{ UIKit }
   s.ios.deployment_target       = '9.0'
+#  s.swift_version 		= '3.0'
 end
