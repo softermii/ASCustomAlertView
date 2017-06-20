@@ -3,8 +3,9 @@
 Custom animated alertViewcontroller with fade background mask
 
 ### Install:
-
+~~~
 pod 'ASCustomAlertView'
+
 
 ### Usage:
 ~~~
