@@ -1,13 +1,13 @@
-# ASCustomAlertView
+## ASCustomAlertView
 
 Custom animated alertViewcontroller with fade background mask
 
-Install:
+### Install:
 
 pod 'ASCustomAlertView'
 
-Usage:
-
+### Usage:
+~~~
   self.showSuccessAlert(with: "title", message: "message", buttons: [("button title", { 
       self.dismissController(controller: self) 
     })
