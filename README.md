@@ -9,7 +9,8 @@ pod 'ASCustomAlertView'
 ~~~
 
 ### Usage:
-~~~~~~~
+```swift
+
   showSuccessAlert(with: "title",
                          message: "message",
                          image: UIImage(named: "placeholder"),
