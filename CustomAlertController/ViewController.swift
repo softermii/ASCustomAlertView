@@ -22,6 +22,7 @@ class ViewController: UIViewController {
    @IBAction func createAlert() {
         showSuccessAlert(with: "title",
                          message: "message",
+                         image: UIImage(named: "placeholder"),
                          buttons: [("dismiss", {
                             self.dismissController(controller: self)
                          })

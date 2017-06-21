@@ -25,8 +25,8 @@ extension UIViewController {
         }
     }
     
-    func showSuccessAlert(with title: String, message: String, buttons: [(String, (Void) -> Void)]?) {
-        let vc = AlertController.makeAlert(title: title, message: message, buttons: buttons, labels: [title, message])
+    func showSuccessAlert(with title: String, message: String, image: UIImage?, buttons: [(String, (Void) -> Void)]?) {
+        let vc = AlertController.makeAlert(title: title, message: message, image: image, buttons: buttons, labels: [title, message])
     
         self.present(vc, animated: false) {
             self.parent?.modalTransitionStyle = .coverVertical
@@ -54,6 +54,8 @@ extension UIViewController {
     
 }
 
+
+
 class AlertController: UIViewController {
     
     @IBOutlet weak var buttonsStack: UIStackView!
@@ -79,6 +81,8 @@ class AlertController: UIViewController {
         
         controls.forEach { element in
             switch element {
+            case let x where element is UIImageView:
+                labelsStack.addArrangedSubview(x)
             case let x where element is UILabel:
                 labelsStack.addArrangedSubview(x)
             case let x where element is AlertButton:
@@ -94,11 +98,12 @@ class AlertController: UIViewController {
         containerView.clipsToBounds = true
     }
     
-    static public func makeAlert(title: String?, message: String?, buttons: [(String, (Void) -> Void)]?, labels: [String]) -> AlertController {
+    static public func makeAlert(title: String?, message: String?, image: UIImage?, buttons: [(String, (Void) -> Void)]?, labels: [String]) -> AlertController {
         let alert = AlertController()
 
-        guard let b = buttons else { return alert }
-        b.forEach { alert.controls.append(getButton(text: $0.0, action: $0.1)) }
+        guard let buttons = buttons else { return alert }
+        buttons.forEach { alert.controls.append(getButton(text: $0.0, action: $0.1)) }
+        if let image = image { alert.controls.append(getImage(image: image)) }
         labels.forEach { alert.controls.append(getLabel(text: setAttributedText(text: $0))) }
 
         return alert
@@ -110,20 +115,29 @@ class AlertController: UIViewController {
         button.setTitle(text, for: .normal)
         button.layer.cornerRadius = 4
         button.layer.masksToBounds = true
-        button.backgroundColor = UIColor.blue
-        button.setTitleColor(UIColor.white, for: .normal)
+        button.backgroundColor = UIColor.asOffBlue
+        button.setTitleColor(UIColor.asWhiteTwo, for: .normal)
         button.action = action
-        button.frame = CGRect(x: button.frame.origin.x, y: button.frame.origin.x, width: 100, height: 44)
+        button.frame = CGRect(x: button.frame.origin.x, y: button.frame.origin.x, width: 100, height: 50)
         button.setNeedsLayout()
         button.layoutIfNeeded()
         
         return button
     }
     
+    
     static func getLabel(text: NSAttributedString) -> UILabel {
         let label = UILabel()
         label.attributedText = text
         return label
+    }
+    
+    static func getImage(image: UIImage) -> UIImageView {
+        let imageView = UIImageView(image: image.resizeImageWith(newSize: CGSize(width: 100, height: 100)))
+        //imageView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        //imageView.clipsToBounds = true
+        imageView.contentMode = .scaleAspectFit
+        return imageView
     }
 
     
@@ -131,10 +145,29 @@ class AlertController: UIViewController {
         let attributes = [NSFontAttributeName : UIFont.init(name: "Verdana", size: 15), NSForegroundColorAttributeName: UIColor.darkGray]
         return NSAttributedString.init(string: text, attributes: attributes as! [String : NSObject])
     }
+ 
+}
+
+
+
+extension UIImage {
     
-    
+    func resizeImageWith(newSize: CGSize) -> UIImage {
+        
+        let horizontalRatio = newSize.width / size.width
+        let verticalRatio = newSize.height / size.height
+        
+        let ratio = max(horizontalRatio, verticalRatio)
+        let newSize = CGSize(width: size.width * ratio, height: size.height * ratio)
+        UIGraphicsBeginImageContextWithOptions(newSize, true, 0)
+        draw(in: CGRect(origin: CGPoint(x: 0, y: 0), size: newSize))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage!
+    }
     
     
 }
+
 
 
