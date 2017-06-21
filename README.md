@@ -21,3 +21,4 @@ pod 'ASCustomAlertView'
   ])
   
 
+![Screenshot](https://media.giphy.com/media/l4FGJYIBoWHAP9XRm/giphy.gif)
