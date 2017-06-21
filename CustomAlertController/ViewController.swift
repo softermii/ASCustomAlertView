@@ -23,7 +23,8 @@ class ViewController: UIViewController {
         showSuccessAlert(with: "title",
                          message: "message",
                          image: UIImage(named: "placeholder"),
-                         buttons: [("dismiss", {
+                         style: .red,
+                         buttons: [("Dismiss", {
                             self.dismissController(controller: self)
                          })
         ])
