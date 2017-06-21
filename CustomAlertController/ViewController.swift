@@ -47,6 +47,7 @@ class ViewController: UIViewController {
         showErrorAlert(with: "Error",
                          message: "This is error message",
                          image: UIImage(named: "placeholder"),
+                         buttonsLayout: .horizontal,
                          buttons: [("OK", {
                             self.dismissController(controller: self)
                          })
@@ -58,6 +59,7 @@ class ViewController: UIViewController {
         showSuccessAlert(with: "Success",
                          message: "This is success message",
                          image: UIImage(named: "placeholder"),
+                         buttonsLayout: .vertical,
                          buttons: [button, button2]
         )
     }

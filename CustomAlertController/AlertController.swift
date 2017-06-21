@@ -9,21 +9,18 @@
 import Foundation
 import UIKit
 
-enum ButtonStyle {
+enum UIStackViewAlignment {
     
-    case blue
-    case red
-    case gray
+    case vertical
+    case horizontal
     
-    func setupButtonStyle(with style: ButtonStyle) -> UIColor {
+    func setupLayout(with style: UIStackViewAlignment) -> UILayoutConstraintAxis  {
         
         switch self {
-        case .blue:
-            return UIColor.asCoolBlue
-        case .red:
-            return UIColor.asCoral
-        case .gray:
-            return UIColor.asSteel
+        case .vertical:
+            return .vertical
+        case .horizontal:
+            return .horizontal
         }
     }
 }
@@ -58,14 +55,14 @@ extension UIViewController {
     }
     
     
-    func showErrorAlert(with title: String, message: String, image: UIImage?, buttons: [(String, (Void) -> Void)]?) {
-        let vc = AlertController.makeAlert(title: title, message: message, image: image, buttons: buttons, labels: [title, message])
+    func showErrorAlert(with title: String, message: String, image: UIImage?, buttonsLayout: UILayoutConstraintAxis, buttons: [(String, (Void) -> Void)]?) {
+        let vc = AlertController.makeAlert(title: title, message: message, image: image, buttonsLayout: buttonsLayout, buttons: buttons, labels: [title, message])
         presentAlertController(controller: vc)
     }
     
     
-    func showSuccessAlert(with title: String, message: String, image: UIImage?, buttons: [UIButton]?) {
-        let vc = AlertController.makeAlertWith(image: image, buttons: buttons, labels: [title, message])
+    func showSuccessAlert(with title: String, message: String, image: UIImage?, buttonsLayout: UILayoutConstraintAxis, buttons: [UIButton]?) {
+        let vc = AlertController.makeAlertWith(image: image, buttons: buttons, buttonsLayout: buttonsLayout, labels: [title, message])
         presentAlertController(controller: vc)
     }
 
@@ -94,12 +91,20 @@ class AlertController: UIViewController {
     @IBOutlet var containerView: UIView!
     
     private var controls:[UIView] = [UIView]()
+    var buttonsLayout: UILayoutConstraintAxis!
+    
     
     convenience init() {
         self.init(nibName: String.init(describing: AlertController.self), bundle: Bundle.main)
         self.modalPresentationStyle = .overCurrentContext
         self.modalTransitionStyle = .coverVertical
-
+    }
+    
+    convenience init(layout: UILayoutConstraintAxis) {
+        self.init(nibName: String.init(describing: AlertController.self), bundle: Bundle.main)
+        self.modalPresentationStyle = .overCurrentContext
+        self.modalTransitionStyle = .coverVertical
+        buttonsLayout = layout
     }
     
     override func loadView() {
@@ -109,6 +114,7 @@ class AlertController: UIViewController {
     
     private func internalLoadViews() {
         self.containerView.clipsToBounds = true
+        
         
         controls.forEach { element in
             switch element {
@@ -125,7 +131,18 @@ class AlertController: UIViewController {
             }
         }
 
+        
         self.view.backgroundColor = UIColor.black.withAlphaComponent(0)
+        
+        switch buttonsLayout {
+        case _ where buttonsLayout == .vertical:
+            self.buttonsStack.axis = .vertical
+            self.buttonsStack.alignment = .fill
+            self.buttonsStack.distribution = .fillEqually
+            self.buttonsStack.spacing = 10
+        default:
+            break
+        }
         
         containerView.layer.cornerRadius = 4
         containerView.clipsToBounds = true
@@ -134,10 +151,11 @@ class AlertController: UIViewController {
     static public func makeAlert(title: String?,
                                  message: String?,
                                  image: UIImage?,
+                                 buttonsLayout: UILayoutConstraintAxis,
                                  buttons: [(String, (Void) -> Void)]?,
                                  labels: [String]) -> AlertController {
         
-        let alert = AlertController()
+        let alert = AlertController(layout: buttonsLayout)
 
         guard let buttons = buttons else { return alert }
         buttons.forEach { alert.controls.append(getButton(text: $0.0, action: $0.1)) }
@@ -150,9 +168,10 @@ class AlertController: UIViewController {
     
     static public func makeAlertWith(image: UIImage?,
                                  buttons: [UIButton]?,
+                                 buttonsLayout: UILayoutConstraintAxis,
                                  labels: [String]) -> AlertController {
         
-        let alert = AlertController()
+        let alert = AlertController(layout: buttonsLayout)
         
         guard let buttons = buttons else { return alert }
         setupAlertWith(alert: alert, image: image, labels: labels, buttons: buttons)
