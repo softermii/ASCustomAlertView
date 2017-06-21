@@ -47,7 +47,7 @@ class ViewController: UIViewController {
         showErrorAlert(with: "Error",
                          message: "This is error message",
                          image: UIImage(named: "placeholder"),
-                         buttonsLayout: .horizontal,
+                         buttonsLayout: .horizontal, animated: true,
                          buttons: [("OK", {
                             self.dismissController(controller: self)
                          })
@@ -58,7 +58,7 @@ class ViewController: UIViewController {
     @IBAction func createSuccessAlert() {
         showSuccessAlert(with: "Success",
                          message: "This is success message",
-                         image: UIImage(named: "placeholder"),
+                         image: UIImage(named: "placeholder"), animated: false,
                          buttonsLayout: .vertical,
                          buttons: [button, button2]
         )
