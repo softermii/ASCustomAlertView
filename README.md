@@ -9,11 +9,14 @@ pod 'ASCustomAlertView'
 ~~~
 
 ### Usage:
-~~~
-  self.showSuccessAlert(with: "title", 
-  message: "message", 
-  image: UIImage(named: "placeholder"),
-  buttons: [("button title", { 
-      self.dismissController(controller: self) 
-    })
+~~~~~~~
+  showSuccessAlert(with: "title",
+                         message: "message",
+                         image: UIImage(named: "placeholder"),
+                         style: .red,
+                         buttons: [("Dismiss", {
+                            self.dismissController(controller: self)
+                         })
   ])
+  
+
