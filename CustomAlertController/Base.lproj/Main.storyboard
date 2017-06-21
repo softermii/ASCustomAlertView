@@ -28,18 +28,34 @@
                                     <constraint firstAttribute="height" constant="44" id="fSC-4O-0IE"/>
                                     <constraint firstAttribute="width" constant="214" id="pxj-VN-Nsf"/>
                                 </constraints>
-                                <state key="normal" title="Show alert">
+                                <state key="normal" title="Show error alert">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="createAlert" destination="BYZ-38-t0r" eventType="touchUpInside" id="hFO-L7-npp"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ayN-f1-hyC">
+                                <rect key="frame" x="80" y="375" width="214" height="44"/>
+                                <color key="backgroundColor" red="0.0097463233399999998" green="0.53326022620000002" blue="0.82064771650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="214" id="dGb-ZJ-ZNX"/>
+                                    <constraint firstAttribute="height" constant="44" id="uRr-Fi-dOg"/>
+                                </constraints>
+                                <state key="normal" title="Show success alert">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="createSuccessAlert" destination="BYZ-38-t0r" eventType="touchUpInside" id="XyW-L7-00P"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="ayN-f1-hyC" firstAttribute="leading" secondItem="zSl-Fw-Tzw" secondAttribute="leading" id="JCS-sR-pDO"/>
                             <constraint firstItem="zSl-Fw-Tzw" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="P0h-5K-Yxh"/>
                             <constraint firstItem="zSl-Fw-Tzw" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jLK-9A-gfl"/>
+                            <constraint firstItem="ayN-f1-hyC" firstAttribute="top" secondItem="zSl-Fw-Tzw" secondAttribute="bottom" constant="20" id="sJW-fh-gN7"/>
                         </constraints>
                     </view>
                 </viewController>

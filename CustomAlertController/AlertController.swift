@@ -31,10 +31,8 @@ enum ButtonStyle {
 
 
 extension UIViewController {
-    
-    
+
     public func dismissController(controller: UIViewController) {
-        
         controller.parent?.modalTransitionStyle = .crossDissolve
         
         controller.dismiss(animated: false) {
@@ -44,19 +42,33 @@ extension UIViewController {
         }
     }
     
-    func showSuccessAlert(with title: String, message: String, image: UIImage?, style: ButtonStyle?, buttons: [(String, (Void) -> Void)]?) {
-        let vc = AlertController.makeAlert(title: title, message: message, image: image, style: style, buttons: buttons, labels: [title, message])
     
-        self.present(vc, animated: false) {
+    func presentAlertController(controller: AlertController) {
+        
+        self.present(controller, animated: false) {
             self.parent?.modalTransitionStyle = .coverVertical
-                UIView.animate(withDuration: 0.2, animations: { [weak self] in
+            
+            UIView.animate(withDuration: 0.2, animations: { [weak self] in
                 self?.view.backgroundColor = UIColor.black.withAlphaComponent(0)
-                    self?.setupSpringAnimation(with: (vc.containerView.layer))
-            }, completion: { (success) in
-                self.view.layer.backgroundColor = UIColor.black.withAlphaComponent(0.1).cgColor
+                self?.setupSpringAnimation(with: (controller.containerView.layer))
+                }, completion: { (success) in
+                    self.view.layer.backgroundColor = UIColor.black.withAlphaComponent(0.1).cgColor
             })
         }
     }
+    
+    
+    func showErrorAlert(with title: String, message: String, image: UIImage?, buttons: [(String, (Void) -> Void)]?) {
+        let vc = AlertController.makeAlert(title: title, message: message, image: image, buttons: buttons, labels: [title, message])
+        presentAlertController(controller: vc)
+    }
+    
+    
+    func showSuccessAlert(with title: String, message: String, image: UIImage?, buttons: [UIButton]?) {
+        let vc = AlertController.makeAlertWith(image: image, buttons: buttons, labels: [title, message])
+        presentAlertController(controller: vc)
+    }
+
     
     
     private func setupSpringAnimation(with layer: CALayer) {
@@ -106,6 +118,8 @@ class AlertController: UIViewController {
                 labelsStack.addArrangedSubview(x)
             case let x where element is AlertButton:
                  buttonsStack.addArrangedSubview(x)
+            case let x where element is UIButton:
+                 buttonsStack.addArrangedSubview(x)
             default:
                 break
             }
@@ -117,25 +131,49 @@ class AlertController: UIViewController {
         containerView.clipsToBounds = true
     }
     
-    static public func makeAlert(title: String?, message: String?, image: UIImage?, style: ButtonStyle?, buttons: [(String, (Void) -> Void)]?, labels: [String]) -> AlertController {
+    static public func makeAlert(title: String?,
+                                 message: String?,
+                                 image: UIImage?,
+                                 buttons: [(String, (Void) -> Void)]?,
+                                 labels: [String]) -> AlertController {
+        
         let alert = AlertController()
 
         guard let buttons = buttons else { return alert }
-        buttons.forEach { alert.controls.append(getButton(text: $0.0, style: style, action: $0.1)) }
+        buttons.forEach { alert.controls.append(getButton(text: $0.0, action: $0.1)) }
         if let image = image { alert.controls.append(getImage(image: image)) }
         labels.forEach { alert.controls.append(getLabel(text: setAttributedText(text: $0))) }
 
         return alert
     }
     
+    
+    static public func makeAlertWith(image: UIImage?,
+                                 buttons: [UIButton]?,
+                                 labels: [String]) -> AlertController {
+        
+        let alert = AlertController()
+        
+        guard let buttons = buttons else { return alert }
+        setupAlertWith(alert: alert, image: image, labels: labels, buttons: buttons)
+        return alert
+    }
+    
+    static func setupAlertWith(alert: AlertController, image: UIImage?, labels: [String], buttons: [UIButton]) {
+        buttons.forEach { (button: UIButton) in alert.controls.append(button) }
+        if let image = image { alert.controls.append(getImage(image: image)) }
+        labels.forEach { alert.controls.append(getLabel(text: setAttributedText(text: $0))) }
+    }
+
+    
     @discardableResult
-    static func getButton(text: String, style: ButtonStyle?, action: @escaping () -> Void) -> AlertButton {
+    static func getButton(text: String, action: @escaping () -> Void) -> AlertButton {
         let button = AlertButton()
         button.setTitle(text, for: .normal)
         button.layer.cornerRadius = 4
         button.layer.masksToBounds = true
-        button.backgroundColor = style?.setupButtonStyle(with: style!)
-        button.setTitleColor(UIColor.asWhiteTwo, for: .normal)
+        button.backgroundColor = UIColor.asCoolBlue
+        button.setTitleColor(UIColor.asWhite, for: .normal)
         button.action = action
         button.frame = CGRect(x: button.frame.origin.x, y: button.frame.origin.x, width: 100, height: 50)
         button.setNeedsLayout()
