@@ -22,3 +22,10 @@ pod 'ASCustomAlertView'
   ```
 
  ![Screenshot](https://media.giphy.com/media/l4FGJYIBoWHAP9XRm/giphy.gif)
+ 
+ 
+ ### Author:
+ Anton Stremovskiy
+ 
+ ### Contacts:
+ [@anton__dev](https://twitter.com/anton__dev)
