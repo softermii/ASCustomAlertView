@@ -19,6 +19,6 @@ pod 'ASCustomAlertView'
                             self.dismissController(controller: self)
                          })
   ])
-  
+  ```
 
-![Screenshot](https://media.giphy.com/media/l4FGJYIBoWHAP9XRm/giphy.gif)
+ ![Screenshot](https://media.giphy.com/media/l4FGJYIBoWHAP9XRm/giphy.gif)
