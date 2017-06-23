@@ -8,9 +8,13 @@
 
 import UIKit
 
+
 class AlertButton : UIButton {
+    
     var action: (() -> Void)?
+    var closeAction: (() -> Void)?
     var text: String = "Ok"
+    public var isDismissable: Bool = false
     
     init() {
         super.init(frame:.zero)
@@ -31,6 +35,9 @@ class AlertButton : UIButton {
     }
     
     @objc fileprivate func buttonTapped(_ btn: AlertButton) {
+        if isDismissable {
+           closeAction?()
+        }
         action?()
     }
 }

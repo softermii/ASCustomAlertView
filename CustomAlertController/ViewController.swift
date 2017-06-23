@@ -39,7 +39,7 @@ class ViewController: UIViewController {
     }
     
     func onCancel() {
-        self.dismissController(controller: self)
+        self.presentedViewController?.dismiss(animated: false, completion: nil)
     }
     
     
@@ -48,8 +48,8 @@ class ViewController: UIViewController {
                          message: "This is error message",
                          image: UIImage(named: "placeholder"),
                          buttonsLayout: .horizontal, animated: true,
-                         buttons: [("OK", {
-                            self.dismissController(controller: self)
+                         buttons: [("OK", true, {
+                            
                          })
         ])
     }

@@ -12,37 +12,28 @@ import UIKit
 
 extension UIViewController {
 
-    public func dismissController(controller: UIViewController) {
-        controller.parent?.modalTransitionStyle = .crossDissolve
-        
-        controller.dismiss(animated: false) {
-            UIView.animate(withDuration: 0.5, animations: { [weak self] in
-                self?.view.backgroundColor = UIColor.white.withAlphaComponent(1)
-            })
-        }
-    }
-    
-    
     func presentAlertController(controller: AlertController, animation: Bool) {
         
         self.present(controller, animated: false) {
             self.parent?.modalTransitionStyle = .coverVertical
             
             UIView.animate(withDuration: 0.2, animations: { [weak self] in
-                self?.view.backgroundColor = UIColor.black.withAlphaComponent(0)
                 
+                controller.containerView.backgroundColor = UIColor.asWhite
+                controller.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        
                 if animation {
                     self?.setupSpringAnimation(with: (controller.containerView.layer))
                 }
                 
                 }, completion: { (success) in
-                    self.view.layer.backgroundColor = UIColor.black.withAlphaComponent(0.1).cgColor
+                    debugPrint("animation completed")
             })
         }
     }
     
     
-    func showErrorAlert(with title: String, message: String, image: UIImage?, buttonsLayout: UILayoutConstraintAxis, animated: Bool, buttons: [(String, (Void) -> Void)]?) {
+    func showErrorAlert(with title: String, message: String, image: UIImage?, buttonsLayout: UILayoutConstraintAxis, animated: Bool, buttons: [(String, isDismissable: Bool, (Void) -> Void)]?) {
         let vc = AlertController.makeAlert(title: title, message: message, image: image, buttonsLayout: buttonsLayout, buttons: buttons, labels: [title, message])
         presentAlertController(controller: vc, animation: animated)
     }
@@ -66,9 +57,6 @@ extension UIViewController {
 
     
     
-   
-
-    
 }
 
 
@@ -82,7 +70,7 @@ class AlertController: UIViewController {
     private var controls:[UIView] = [UIView]()
     var buttonsLayout: UILayoutConstraintAxis!
     
-    
+   
     convenience init() {
         self.init(nibName: String.init(describing: AlertController.self), bundle: Bundle.main)
         self.modalPresentationStyle = .overCurrentContext
@@ -96,6 +84,7 @@ class AlertController: UIViewController {
         buttonsLayout = layout
     }
     
+
     override func loadView() {
         super.loadView()
         internalLoadViews()
@@ -121,7 +110,7 @@ class AlertController: UIViewController {
         }
 
         
-        self.view.backgroundColor = UIColor.black.withAlphaComponent(0)
+        containerView.backgroundColor = UIColor.black.withAlphaComponent(0)
         
         switch buttonsLayout {
         case _ where buttonsLayout == .vertical:
@@ -141,13 +130,13 @@ class AlertController: UIViewController {
                                  message: String?,
                                  image: UIImage?,
                                  buttonsLayout: UILayoutConstraintAxis,
-                                 buttons: [(String, (Void) -> Void)]?,
+                                 buttons: [(String, isDismissable: Bool, (Void) -> Void)]?,
                                  labels: [String]) -> AlertController {
         
         let alert = AlertController(layout: buttonsLayout)
 
         guard let buttons = buttons else { return alert }
-        buttons.forEach { alert.controls.append(getButton(text: $0.0, action: $0.1)) }
+        buttons.forEach { alert.controls.append(alert.getButton(text: $0.0, isDismissable: $0.isDismissable, action: $0.2)) }
         if let image = image { alert.controls.append(getImage(image: image)) }
         labels.forEach { alert.controls.append(getLabel(text: setAttributedText(text: $0))) }
 
@@ -175,22 +164,35 @@ class AlertController: UIViewController {
 
     
     @discardableResult
-    static func getButton(text: String, action: @escaping () -> Void) -> AlertButton {
+    func getButton(text: String,
+                   isDismissable: Bool = false,
+                   action: @escaping () -> Void) -> AlertButton {
+        
         let button = AlertButton()
         button.setTitle(text, for: .normal)
         button.layer.cornerRadius = 4
+        button.isDismissable = isDismissable
         button.layer.masksToBounds = true
         button.backgroundColor = UIColor.asCoolBlue
         button.setTitleColor(UIColor.asWhite, for: .normal)
         button.action = action
+        
+        let closeAction = {
+            self.dismiss(animated: false, completion: {
+                UIView.animate(withDuration: 0.2, animations: { _ in
+                    self.view.backgroundColor = UIColor.white.withAlphaComponent(1)
+                })
+            })
+        }
+        
+        button.closeAction = closeAction
         button.frame = CGRect(x: button.frame.origin.x, y: button.frame.origin.x, width: 100, height: 50)
         button.setNeedsLayout()
         button.layoutIfNeeded()
         
         return button
     }
-    
-    
+
     static func getLabel(text: NSAttributedString) -> UILabel {
         let label = UILabel()
         label.attributedText = text
@@ -208,8 +210,18 @@ class AlertController: UIViewController {
         let attributes = [NSFontAttributeName : UIFont.init(name: "Verdana", size: 15), NSForegroundColorAttributeName: UIColor.darkGray]
         return NSAttributedString.init(string: text, attributes: attributes as! [String : NSObject])
     }
- 
+    
+
+    /*static private func dismissAlertController() {
+        self.dismiss(animated: false) {
+            UIView.animate(withDuration: 0.2, animations: { _ in
+                self.view.backgroundColor = UIColor.white.withAlphaComponent(1)
+            })
+        }
+    }*/
+
 }
+
 
 
 
