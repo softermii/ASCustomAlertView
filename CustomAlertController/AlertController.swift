@@ -12,19 +12,19 @@ import UIKit
 
 extension UIViewController {
 
-    func presentAlertController(controller: AlertController, animation: Bool) {
+    func presentAlertController(controller: AlertController) {
         
         self.present(controller, animated: false) {
             self.parent?.modalTransitionStyle = .coverVertical
             
-            UIView.animate(withDuration: 0.2, animations: { [weak self] in
+            UIView.animate(withDuration: 0.2, animations: { _ in
                 
                 controller.containerView.backgroundColor = UIColor.asWhite
                 controller.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         
-                if animation {
-                    self?.setupSpringAnimation(with: (controller.containerView.layer))
-                }
+                //if animation {
+                //    self?.setupSpringAnimation(with: (controller.containerView.layer))
+                //}
                 
                 }, completion: { (success) in
                     debugPrint("animation completed")
@@ -33,15 +33,15 @@ extension UIViewController {
     }
     
     
-    func showErrorAlert(with title: String, message: String, image: UIImage?, buttonsLayout: UILayoutConstraintAxis, animated: Bool, buttons: [(String, isDismissable: Bool, (Void) -> Void)]?) {
+    func showErrorAlert(with title: String, message: String, image: UIImage?, buttonsLayout: UILayoutConstraintAxis, buttons: [(String, isDismissable: Bool, (Void) -> Void)]?) {
         let vc = AlertController.makeAlert(title: title, message: message, image: image, buttonsLayout: buttonsLayout, buttons: buttons, labels: [title, message])
-        presentAlertController(controller: vc, animation: animated)
+        presentAlertController(controller: vc)
     }
     
     
-    func showSuccessAlert(with title: String, message: String, image: UIImage?, animated: Bool, buttonsLayout: UILayoutConstraintAxis, buttons: [UIButton]?) {
+    func showSuccessAlert(with title: String, message: String, image: UIImage?, buttonsLayout: UILayoutConstraintAxis, buttons: [UIButton]?) {
         let vc = AlertController.makeAlertWith(image: image, buttons: buttons, buttonsLayout: buttonsLayout, labels: [title, message])
-        presentAlertController(controller: vc, animation: animated)
+        presentAlertController(controller: vc)
     }
 
     func setupSpringAnimation(with layer: CALayer) {
