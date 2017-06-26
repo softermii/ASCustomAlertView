@@ -9,15 +9,13 @@
 import Foundation
 import UIKit
 
-
 extension UIViewController {
-
     func presentAlertController(controller: AlertController) {
         
         self.present(controller, animated: false) {
             self.parent?.modalTransitionStyle = .coverVertical
             
-            UIView.animate(withDuration: 0.2, animations: { _ in
+            UIView.animate(withDuration: AlertController.animationDuration, animations: { _ in
                 
                 controller.containerView.backgroundColor = UIColor.asWhite
                 controller.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
@@ -32,12 +30,10 @@ extension UIViewController {
         }
     }
     
-    
     func showErrorAlert(with title: String, message: String, image: UIImage?, buttonsLayout: UILayoutConstraintAxis, buttons: [(String, isDismissable: Bool, (Void) -> Void)]?) {
         let vc = AlertController.makeAlert(title: title, message: message, image: image, buttonsLayout: buttonsLayout, buttons: buttons, labels: [title, message])
         presentAlertController(controller: vc)
     }
-    
     
     func showSuccessAlert(with title: String, message: String, image: UIImage?, buttonsLayout: UILayoutConstraintAxis, buttons: [UIButton]?) {
         let vc = AlertController.makeAlertWith(image: image, buttons: buttons, buttonsLayout: buttonsLayout, labels: [title, message])
@@ -54,11 +50,8 @@ extension UIViewController {
         anim.duration = 1
         layer.add(anim, forKey: "mySpring")
     }
-
-    
     
 }
-
 
 
 class AlertController: UIViewController {
@@ -68,9 +61,14 @@ class AlertController: UIViewController {
     @IBOutlet var containerView: UIView!
     
     private var controls:[UIView] = [UIView]()
-    var buttonsLayout: UILayoutConstraintAxis!
     
-   
+    var buttonsLayout: UILayoutConstraintAxis = .horizontal
+    
+    static public var alertCornerRadius = CGFloat(4)
+    static public var animationDuration = TimeInterval(0.2)
+    static public var maximumImageHeight = CGFloat(80)
+    
+    
     convenience init() {
         self.init(nibName: String.init(describing: AlertController.self), bundle: Bundle.main)
         self.modalPresentationStyle = .overCurrentContext
@@ -83,16 +81,15 @@ class AlertController: UIViewController {
         self.modalTransitionStyle = .coverVertical
         buttonsLayout = layout
     }
-    
 
     override func loadView() {
         super.loadView()
+     
         internalLoadViews()
     }
     
     private func internalLoadViews() {
-        self.containerView.clipsToBounds = true
-        
+        containerView.clipsToBounds = true
         
         controls.forEach { element in
             switch element {
@@ -108,7 +105,6 @@ class AlertController: UIViewController {
                 break
             }
         }
-
         
         containerView.backgroundColor = UIColor.black.withAlphaComponent(0)
         
@@ -122,7 +118,7 @@ class AlertController: UIViewController {
             break
         }
         
-        containerView.layer.cornerRadius = 4
+        containerView.layer.cornerRadius = AlertController.alertCornerRadius
         containerView.clipsToBounds = true
     }
     
@@ -179,7 +175,7 @@ class AlertController: UIViewController {
         
         let closeAction = {
             self.dismiss(animated: false, completion: {
-                UIView.animate(withDuration: 0.2, animations: { _ in
+                UIView.animate(withDuration: AlertController.animationDuration, animations: { _ in
                     self.view.backgroundColor = UIColor.white.withAlphaComponent(1)
                 })
             })
@@ -200,7 +196,8 @@ class AlertController: UIViewController {
     }
     
     static func getImage(image: UIImage) -> UIImageView {
-        let imageView = UIImageView(image: image.resizeImageWith(newSize: CGSize(width: 100, height: 100)))
+        guard let img = image.resizeImageWith(newSize: CGSize(width: 100, height: 100)) else { return UIImageView(image: image) }
+        let imageView = UIImageView(image: img)
         imageView.contentMode = .scaleAspectFit
         return imageView
     }
@@ -222,13 +219,9 @@ class AlertController: UIViewController {
 
 }
 
-
-
-
 extension UIImage {
     
-    func resizeImageWith(newSize: CGSize) -> UIImage {
-        
+    func resizeImageWith(newSize: CGSize) -> UIImage? {
         let horizontalRatio = newSize.width / size.width
         let verticalRatio = newSize.height / size.height
         
@@ -238,9 +231,8 @@ extension UIImage {
         draw(in: CGRect(origin: CGPoint(x: 0, y: 0), size: newSize))
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        return newImage!
+        return newImage
     }
-    
     
 }
 
