@@ -19,10 +19,6 @@ extension UIViewController {
                 
                 controller.containerView.backgroundColor = UIColor.asWhite
                 controller.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
-        
-                //if animation {
-                //    self?.setupSpringAnimation(with: (controller.containerView.layer))
-                //}
                 
                 }, completion: { (success) in
                     debugPrint("animation completed")
@@ -58,6 +54,7 @@ class AlertController: UIViewController {
     
     @IBOutlet weak var buttonsStack: UIStackView!
     @IBOutlet weak var labelsStack: UIStackView!
+    @IBOutlet weak var imagesStack: UIStackView!
     @IBOutlet var containerView: UIView!
     
     private var controls:[UIView] = [UIView]()
@@ -94,7 +91,7 @@ class AlertController: UIViewController {
         controls.forEach { element in
             switch element {
             case let x where element is UIImageView:
-                labelsStack.addArrangedSubview(x)
+                imagesStack.addArrangedSubview(x)
             case let x where element is UILabel:
                 labelsStack.addArrangedSubview(x)
             case let x where element is AlertButton:
@@ -196,8 +193,7 @@ class AlertController: UIViewController {
     }
     
     static func getImage(image: UIImage) -> UIImageView {
-        guard let img = image.resizeImageWith(newSize: CGSize(width: 100, height: 100)) else { return UIImageView(image: image) }
-        let imageView = UIImageView(image: img)
+        let imageView = UIImageView(image: image)
         imageView.contentMode = .scaleAspectFit
         return imageView
     }
@@ -209,32 +205,8 @@ class AlertController: UIViewController {
     }
     
 
-    /*static private func dismissAlertController() {
-        self.dismiss(animated: false) {
-            UIView.animate(withDuration: 0.2, animations: { _ in
-                self.view.backgroundColor = UIColor.white.withAlphaComponent(1)
-            })
-        }
-    }*/
-
 }
 
-extension UIImage {
-    
-    func resizeImageWith(newSize: CGSize) -> UIImage? {
-        let horizontalRatio = newSize.width / size.width
-        let verticalRatio = newSize.height / size.height
-        
-        let ratio = max(horizontalRatio, verticalRatio)
-        let newSize = CGSize(width: size.width * ratio, height: size.height * ratio)
-        UIGraphicsBeginImageContextWithOptions(newSize, true, 0)
-        draw(in: CGRect(origin: CGPoint(x: 0, y: 0), size: newSize))
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return newImage
-    }
-    
-}
 
 
 
