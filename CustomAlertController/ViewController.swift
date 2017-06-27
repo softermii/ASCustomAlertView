@@ -11,24 +11,6 @@ import UIKit
 class ViewController: UIViewController {
 
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-           }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-    
-    func onTap() {
-        print("clicked")
-    }
-    
-    func onCancel() {
-        self.presentedViewController?.dismiss(animated: false, completion: nil)
-    }
-    
-        
     @IBAction func createAlert() {
         
         //buton 1
