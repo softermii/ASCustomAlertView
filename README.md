@@ -49,6 +49,12 @@ pod 'ASCustomAlertView'
  ![Screenshot](https://media.giphy.com/media/l0IyeBxbmtcsKIZmU/giphy.gif)
  
  
+ ### Todo:
+ 
+ - [ ] Different Animations
+ - [ ] Custom styles for button
+ 
+ 
  #### Author:
  Anton Stremovskiy
  
