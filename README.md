@@ -9,41 +9,27 @@ pod 'ASCustomAlertView'
 ~~~
 
 ### Usage:
-```swift
-       showErrorAlert(with: "Error",
-                      message: "This is error message",
-                      image: UIImage(named: "placeholder"),
-                      buttons: [("OK", {
-                          self.dismissController(controller: self)
-                      })
-        ])
-    }
- ```
- 
- 
  ```swift
  
-  override func viewDidLoad() {
-        super.viewDidLoad()
+    @IBAction func createAlert() {
         
-        button = UIButton()
+        // buton 1
+        let button = AlertButton()
         button.setTitle("OK", for: .normal)
-        button.addTarget(self, action: #selector(ViewController.onTap), for: .touchUpInside)
-        button.backgroundColor = UIColor.asOffBlue
+        button.action = {
+            print("ok")
+        }
+        // button 2
+        let button2 = AlertButton()
+        button2.setTitle("DISMISS", for: .normal)
+        button2.backgroundColor = UIColor.asCoral
         
-        button2 = UIButton()
-        button2.setTitle("Dismiss", for: .normal)
-        button2.addTarget(self, action: #selector(ViewController.onCancel), for: .touchUpInside)
-        button2.backgroundColor = UIColor.asCoral 
-    }
-
-     showSuccessAlert(with: "Success",
-                      message: "This is success message",
-                      image: UIImage(named: "placeholder"),
-                      buttons: [button, button2]
-        )
-    }
-
+        showAlert(with: "Error",
+                         message: "This is error message",
+                         image: UIImage(named: "placeholder"),
+                         buttonsLayout: .horizontal,
+                         buttons: [button, button2]
+        )}
  ```
 
  ![Screenshot](https://media.giphy.com/media/l0IyeBxbmtcsKIZmU/giphy.gif)
@@ -51,10 +37,9 @@ pod 'ASCustomAlertView'
  
  ### Todo:
  
- - [ ] Different Animations
- - [ ] Custom styles for button
+ - [ ] Custom Animations
  
- 
+
  #### Author:
  Anton Stremovskiy
  
