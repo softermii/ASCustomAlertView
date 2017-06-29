@@ -12,15 +12,12 @@ import UIKit
 extension UIViewController {
     
     func presentAlertController(controller: AlertController) {
-        
         self.present(controller, animated: false) {
             self.parent?.modalTransitionStyle = .coverVertical
             
             UIView.animate(withDuration: AlertController.animationDuration, animations: { _ in
-                
                 controller.containerView.backgroundColor = UIColor.asWhite
                 controller.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
-                
                 }, completion: { (success) in
                     debugPrint("animation completed")
             })
@@ -32,6 +29,8 @@ extension UIViewController {
         presentAlertController(controller: vc)
     }
     
+    //MARK: - TODO: future iterations
+    /*
     func setupSpringAnimation(with layer: CALayer) {
         let anim = CASpringAnimation(keyPath: "transform.rotation")
         anim.fromValue = 0.3
@@ -42,7 +41,7 @@ extension UIViewController {
         anim.duration = 1
         layer.add(anim, forKey: "mySpring")
     }
-    
+    */
 }
 
 
@@ -52,16 +51,14 @@ class AlertController: UIViewController {
     @IBOutlet weak var labelsStack: UIStackView!
     @IBOutlet weak var imagesStack: UIStackView!
     @IBOutlet var containerView: UIView!
-    
-    private var controls:[UIView] = [UIView]()
-    
-    var buttonsLayout: UILayoutConstraintAxis = .horizontal
-    
-    static public var alertCornerRadius = CGFloat(4)
-    static public var animationDuration = TimeInterval(0.2)
-    static public var maximumImageHeight = CGFloat(80)
-    
-    
+
+    private var controls:[UIView]               = [UIView]()
+    var buttonsLayout: UILayoutConstraintAxis   = .horizontal
+    static public var alertCornerRadius         = CGFloat(4)
+    static public var buttonDefaultCornerRadius = CGFloat(4)
+    static public var animationDuration         = TimeInterval(0.2)
+    static public var maximumImageHeight        = CGFloat(80)
+
     convenience init() {
         self.init(nibName: String.init(describing: AlertController.self), bundle: Bundle.main)
         self.modalPresentationStyle = .overCurrentContext
@@ -102,16 +99,16 @@ class AlertController: UIViewController {
         
         switch buttonsLayout {
         case _ where buttonsLayout == .vertical:
-            self.buttonsStack.axis = .vertical
-            self.buttonsStack.alignment = .fill
+            self.buttonsStack.axis         = .vertical
+            self.buttonsStack.alignment    = .fill
             self.buttonsStack.distribution = .fillEqually
-            self.buttonsStack.spacing = 10
+            self.buttonsStack.spacing      = 10
         default:
             break
         }
-        
+
         containerView.layer.cornerRadius = AlertController.alertCornerRadius
-        containerView.clipsToBounds = true
+        containerView.clipsToBounds      = true
     }
     
     @discardableResult
@@ -125,11 +122,9 @@ class AlertController: UIViewController {
         let alert = AlertController(layout: buttonsLayout)
         
         guard let buttons = buttons else { return alert }
-        buttons.forEach { alert.controls.append(alert.getButton(text: ($0.titleLabel?.text) ?? "Button",
-                                                                isDismissable: $0.isDismissable,
-                                                                backgroundColor: $0.backgroundColor!,
-                                                                action: $0.action)) }
-        
+        alert.controls = buttons
+        alert.controls.forEach { ($0 as? AlertButton)?.closeAction = alert.closeAction() }
+
         if let image = image { alert.controls.append(getImage(image: image)) }
         labels.forEach { alert.controls.append(getLabel(text: $0)) }
         
@@ -144,27 +139,29 @@ class AlertController: UIViewController {
         
         let button = AlertButton()
         button.setTitle(text, for: .normal)
-        button.layer.cornerRadius = 4
+        button.layer.cornerRadius = AlertController.buttonDefaultCornerRadius
         button.isDismissable = isDismissable
         button.layer.masksToBounds = true
         button.backgroundColor = backgroundColor
         button.setTitleColor(UIColor.asWhite, for: .normal)
         button.action = action
-        
-        let closeAction = {
-            self.dismiss(animated: false, completion: {
-                UIView.animate(withDuration: AlertController.animationDuration, animations: { _ in
-                    self.view.backgroundColor = UIColor.white.withAlphaComponent(1)
-                })
-            })
-        }
-        
-        button.closeAction = closeAction
-        button.frame = CGRect(x: button.frame.origin.x, y: button.frame.origin.x, width: 100, height: 50)
+        button.closeAction = closeAction()
         button.setNeedsLayout()
         button.layoutIfNeeded()
         
         return button
+    }
+    
+    internal func closeAction() -> () -> Void {
+        let closeAction = {
+            self.dismiss(animated: false, completion: {
+                UIView.animate(withDuration: AlertController.animationDuration, animations: { [weak self] _ in
+                    self?.view.backgroundColor = UIColor.white.withAlphaComponent(1)
+                })
+            })
+        }
+        
+        return closeAction
     }
 
     static func getLabel(text: NSAttributedString) -> UILabel {
@@ -178,10 +175,5 @@ class AlertController: UIViewController {
         imageView.contentMode = .scaleAspectFit
         return imageView
     }
-
     
 }
-
-
-
-

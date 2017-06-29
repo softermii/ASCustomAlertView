@@ -24,6 +24,7 @@ class ViewController: UIViewController {
         let button2 = AlertButton()
         button2.setTitle("DISMISS", for: .normal)
         button2.backgroundColor = UIColor.asCoral
+        button.isDismissable = true
         
         showAlert(with: NSAttributedString(string: "Error"),
                          message: NSAttributedString(string: "This is error messages"),
