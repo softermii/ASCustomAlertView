@@ -13,9 +13,8 @@ class AlertButton : UIButton {
     
     var action: (() -> Void)? = nil
     var closeAction: (() -> Void)?
-    
-    public var backColor = UIColor.asCoolBlue
 
+    public var backColor           = UIColor.asCoolBlue
     public var isDismissable: Bool = true
     
     init() {
@@ -37,6 +36,7 @@ class AlertButton : UIButton {
         if isDismissable || action == nil {
            closeAction?()
         }
+        
         action?()
     }
 }
