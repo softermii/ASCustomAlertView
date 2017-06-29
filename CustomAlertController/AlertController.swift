@@ -26,7 +26,7 @@ extension UIViewController {
         }
     }
     
-    func showAlert(with title: String, message: String, image: UIImage?, buttonsLayout: UILayoutConstraintAxis, buttons: [AlertButton]?) {
+    func showAlert(with title: NSAttributedString, message: NSAttributedString, image: UIImage?, buttonsLayout: UILayoutConstraintAxis, buttons: [AlertButton]?) {
         let vc = AlertController.showWarningAlert(with: title, message: message, image: image, buttonsLayout: buttonsLayout, buttons: buttons, labels: [title, message])
         presentAlertController(controller: vc)
     }
@@ -114,12 +114,12 @@ class AlertController: UIViewController {
     }
     
     @discardableResult
-    static public func showWarningAlert(with title: String?,
-                                 message: String?,
+    static public func showWarningAlert(with title: NSAttributedString?,
+                                 message: NSAttributedString?,
                                  image: UIImage?,
                                  buttonsLayout: UILayoutConstraintAxis,
                                  buttons: [AlertButton]?,
-                                 labels: [String]) -> AlertController {
+                                 labels: [NSAttributedString]) -> AlertController {
         
         let alert = AlertController(layout: buttonsLayout)
         
@@ -130,7 +130,7 @@ class AlertController: UIViewController {
                                                                 action: $0.action)) }
         
         if let image = image { alert.controls.append(getImage(image: image)) }
-        labels.forEach { alert.controls.append(getLabel(text: setAttributedText(text: $0))) }
+        labels.forEach { alert.controls.append(getLabel(text: $0)) }
         
         return alert
     }
@@ -178,10 +178,6 @@ class AlertController: UIViewController {
         return imageView
     }
 
-    static private func setAttributedText (text: String) -> NSAttributedString {
-        let attributes = [NSFontAttributeName : UIFont.init(name: "Verdana", size: 15), NSForegroundColorAttributeName: UIColor.darkGray]
-        return NSAttributedString.init(string: text, attributes: attributes as! [String : NSObject])
-    }
     
 }
 

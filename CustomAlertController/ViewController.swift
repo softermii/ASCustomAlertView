@@ -19,13 +19,14 @@ class ViewController: UIViewController {
         button.action = {
             print("ok")
         }
+        
         // button 2
         let button2 = AlertButton()
         button2.setTitle("DISMISS", for: .normal)
         button2.backgroundColor = UIColor.asCoral
         
-        showAlert(with: "Error",
-                         message: "This is error message",
+        showAlert(with: NSAttributedString(string: "Error"),
+                         message: NSAttributedString(string: "This is error messages"),
                          image: UIImage(named: "placeholder"),
                          buttonsLayout: .horizontal,
                          buttons: [button, button2]
