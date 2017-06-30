@@ -109,6 +109,20 @@ class AlertController: UIViewController {
 
         containerView.layer.cornerRadius = AlertController.alertCornerRadius
         containerView.clipsToBounds      = true
+        
+    }
+    
+    private func initLayoutsForPad(container: UIView) {
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            let constW = NSLayoutConstraint(item: container,
+                                            attribute: .width,
+                                            relatedBy: .equal,
+                                            toItem: nil,
+                                            attribute: .notAnAttribute, 
+                                            multiplier: 1, 
+                                            constant: 100)
+            container.addConstraint(constW)
+        }
     }
     
     @discardableResult
@@ -167,6 +181,7 @@ class AlertController: UIViewController {
     static func getLabel(text: NSAttributedString) -> UILabel {
         let label = UILabel()
         label.attributedText = text
+        label.numberOfLines = 0
         return label
     }
     
