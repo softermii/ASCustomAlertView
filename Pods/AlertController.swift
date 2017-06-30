@@ -112,19 +112,6 @@ class AlertController: UIViewController {
         
     }
     
-    private func initLayoutsForPad(container: UIView) {
-        if UIDevice.current.userInterfaceIdiom == .pad {
-            let constW = NSLayoutConstraint(item: container,
-                                            attribute: .width,
-                                            relatedBy: .equal,
-                                            toItem: nil,
-                                            attribute: .notAnAttribute, 
-                                            multiplier: 1, 
-                                            constant: 100)
-            container.addConstraint(constW)
-        }
-    }
-    
     @discardableResult
     static public func showWarningAlert(with title: NSAttributedString?,
                                  message: NSAttributedString?,
