@@ -8,9 +8,14 @@
 
 import UIKit
 
+
 class AlertButton : UIButton {
-    var action: (() -> Void)?
-    var text: String = "Ok"
+    
+    var action: (() -> Void)? = nil
+    var closeAction: (() -> Void)?
+
+    public var backColor           = UIColor.asCoolBlue
+    public var isDismissable: Bool = true
     
     init() {
         super.init(frame:.zero)
@@ -22,15 +27,16 @@ class AlertButton : UIButton {
         localInit()
     }
     
-    public func setup(with title: String) {
-        setTitle(text, for: .normal)
-    }
-    
     private func localInit() {
+        backgroundColor = backColor
         addTarget(self, action:#selector(AlertButton.buttonTapped(_:)), for:.touchUpInside)
     }
     
     @objc fileprivate func buttonTapped(_ btn: AlertButton) {
+        if isDismissable || action == nil {
+           closeAction?()
+        }
+        
         action?()
     }
 }

@@ -9,60 +9,28 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
-    var button: UIButton!
-    var button2: UIButton!
-    
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+
+    @IBAction func createAlert() {
         
-        button = UIButton()
+        //buton 1
+        let button = AlertButton()
         button.setTitle("OK", for: .normal)
-        button.addTarget(self, action: #selector(ViewController.onTap), for: .touchUpInside)
-        button.backgroundColor = UIColor.asOffBlue
+        button.action = {
+            print("ok")
+        }
         
-        button2 = UIButton()
-        button2.setTitle("Dismiss", for: .normal)
-        button2.addTarget(self, action: #selector(ViewController.onCancel), for: .touchUpInside)
+        // button 2
+        let button2 = AlertButton()
+        button2.setTitle("DISMISS", for: .normal)
         button2.backgroundColor = UIColor.asCoral
+        button.isDismissable = true
         
-        
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-    
-    func onTap() {
-        print("clicked")
-    }
-    
-    func onCancel() {
-        self.presentedViewController?.dismiss(animated: false, completion: nil)
-    }
-    
-    
-   @IBAction func createAlert() {
-        showErrorAlert(with: "Error",
-                         message: "This is error message",
+        showAlert(with: NSAttributedString(string: "Error"),
+                         message: NSAttributedString(string: "This is error messages"),
                          image: UIImage(named: "placeholder"),
                          buttonsLayout: .horizontal,
-                         buttons: [("OK", true, {
-                            
-                         })
-        ])
-    }
-    
-    
-    @IBAction func createSuccessAlert() {
-        showSuccessAlert(with: "Success",
-                         message: "This is success message",
-                         image: UIImage(named: "placeholder"),
-                         buttonsLayout: .vertical,
                          buttons: [button, button2]
-        )
-    }
-
+        )}
 }
 
