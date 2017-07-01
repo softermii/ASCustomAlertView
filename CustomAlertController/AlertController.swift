@@ -86,6 +86,8 @@ class AlertController: UIViewController {
                 imagesStack.addArrangedSubview(x)
             case let x where element is UILabel:
                 labelsStack.addArrangedSubview(x)
+                labelsStack.setNeedsLayout()
+                labelsStack.layoutIfNeeded()
             case let x where element is AlertButton:
                  buttonsStack.addArrangedSubview(x)
             case let x where element is UIButton:
