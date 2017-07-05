@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
   s.author                      = { 'Anton Stremovskiy'   => 'perlik@gmail.com',
                                     'Max Rachytskyy'     => 'maksym.rachytskyy@softermii.com' }
   s.license                     = { :type => "MIT", :file => "LICENSE" }
-  s.source                      = { git: "https://github.com/antons81/ASCustomAlertView.git", tag: "v#{s.version}" }
+  s.source                      = { git: "https://github.com/softermii/ASCustomAlertView.git", tag: "v#{s.version}" }
   s.platform                    = :ios, '9.0'
   s.requires_arc                = true
   s.source_files                = 'Pods/*.{swift, xib}', '*.xib'
