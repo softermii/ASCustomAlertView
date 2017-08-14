@@ -229,8 +229,6 @@ class AlertController: UIViewController {
             self.dismiss(animated: false, completion: {
                 UIView.animate(withDuration: AlertController.animationDuration, animations: { [weak self] _ in
                     self?.view.backgroundColor = UIColor.white.withAlphaComponent(1)
-                    self?.view.removeFromSuperview()
-                    self?.view = nil
                 })
             })
         }
