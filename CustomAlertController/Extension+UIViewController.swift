@@ -18,6 +18,7 @@ extension UIViewController {
             
             UIView.animate(withDuration: AlertController.animationDuration, animations: { _ in
                 controller.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+                //controller.setupSpringAnimation(with: controller.containerView.layer) //TODO
             }, completion: { (success) in
                 //debugPrint("animation completed")
             })

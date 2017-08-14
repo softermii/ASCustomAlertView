@@ -20,6 +20,11 @@ extension NSMutableAttributedString {
         return NSMutableAttributedString(string: str ?? "", attributes: [NSFontAttributeName: UIFont.h1Font(), NSForegroundColorAttributeName: textColor, NSParagraphStyleAttributeName: paragraphStyle])
     }
     
+    class func b2(string str: String?, textColor: UIColor = .white, paragraphStyle: NSMutableParagraphStyle = NSMutableParagraphStyle.center) -> NSMutableAttributedString {
+        return NSMutableAttributedString(string: str ?? "", attributes: [NSFontAttributeName: UIFont.h1Font(), NSForegroundColorAttributeName: textColor, NSParagraphStyleAttributeName: paragraphStyle])
+    }
+
+    
     
     class func p1(string str: String?, textColor: UIColor = .lightGray, paragraphStyle: NSMutableParagraphStyle = NSMutableParagraphStyle.left) -> NSMutableAttributedString {
         return NSMutableAttributedString(string: str ?? "", attributes: [NSFontAttributeName: UIFont.p1Font(), NSForegroundColorAttributeName: textColor, NSParagraphStyleAttributeName: paragraphStyle])

@@ -46,15 +46,25 @@ class AlertController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        cleanActions()
+        unloadSubViews()
     }
     
-    fileprivate func cleanActions() {
-        for button in buttonsStack.subviews {
-            if button is AlertButton {
-                if let but = button as? AlertButton {
-                    but.action = nil
-                }
+    private func unloadSubViews() {
+        
+        controls.forEach { element in
+            switch element {
+            case let x where element is UIImageView:
+                imagesStack.removeArrangedSubview(x)
+            case let x where element is AlertTextField:
+                fieldsStack.removeArrangedSubview(x)
+            case let x where element is UILabel:
+                labelsStack.removeArrangedSubview(x)
+            case let x where element is AlertButton:
+                buttonsStack.removeArrangedSubview(x)
+            case let x where element is RatingView:
+                labelsStack.removeArrangedSubview(x)
+            default:
+                break
             }
         }
     }
@@ -83,6 +93,7 @@ class AlertController: UIViewController {
                 break
             }
         }
+        
         
         containerView.backgroundColor = UIColor.asWhite
         view.backgroundColor = UIColor.black.withAlphaComponent(0)
@@ -172,7 +183,7 @@ class AlertController: UIViewController {
 
 
 
-    @discardableResult
+    /*@discardableResult
     func getButton(text: String,
                    isDismissable: Bool = false,
                    backgroundColor: UIColor = UIColor.clear,
@@ -180,7 +191,7 @@ class AlertController: UIViewController {
         
         let button = AlertButton()
         button.layer.cornerRadius = AlertController.buttonDefaultCornerRadius
-        button.isDismissable = isDismissable
+        button.isDismissable = AlertButton.isDismissable
         button.layer.masksToBounds = true
         button.backgroundColor = backgroundColor
         button.setTitleColor(UIColor.asCoolBlueTwo, for: .normal)
@@ -190,7 +201,7 @@ class AlertController: UIViewController {
         button.layoutIfNeeded()
         
         return button
-    }
+    }*/
     
     @discardableResult
     func getTextField(text: String,
