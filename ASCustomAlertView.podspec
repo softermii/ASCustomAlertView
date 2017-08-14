@@ -14,6 +14,5 @@ Pod::Spec.new do |s|
   s.source_files                = 'Pods/*.{swift, xib}', '*.xib'
   s.ios.frameworks              = %w{ UIKit }
   s.ios.deployment_target       = '9.0'
-  s.dependency 'Cosmo'
-#  s.swift_version 		= '3.0'
+  s.dependency 'Cosmos'
 end
