@@ -8,18 +8,36 @@
 
 import UIKit
 
-
 class AlertButton : UIButton {
     
     var action: (() -> Void)? = nil
     var closeAction: (() -> Void)?
 
-    public var backColor           = UIColor.asCoolBlue
-    public var isDismissable: Bool = true
+    static public var backColor           = UIColor.clear
+    static public var isDismissable: Bool = true
     
-    init() {
+    public static var okButton: AlertButton = {
+        let button = AlertButton(title: "OK")
+        button.action = nil
+        return button
+    }()
+    
+    public static var cancelButton: AlertButton = {
+        let button = AlertButton(title: "Cancel")
+        button.action = nil
+        return button
+    }()
+
+    init(title: String = "OK") {
         super.init(frame:.zero)
-        localInit()
+        localInit(title: title)
+    }
+    
+    convenience init(title: String? = "OK", backColor: UIColor? = AlertButton.backColor, textColor: UIColor? = .white) {
+        self.init()
+        backgroundColor = backColor
+        setAttributedTitle(NSMutableAttributedString.b2(string: title), for: .normal)
+        actionInit()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -27,18 +45,23 @@ class AlertButton : UIButton {
         localInit()
     }
     
-    private func localInit() {
-        backgroundColor = backColor
+    private func actionInit() {
+        addTarget(self, action:#selector(AlertButton.buttonTapped(_:)), for:.touchUpInside)
+    }
+
+    
+    private func localInit(title: String = "OK") {
+        backgroundColor = AlertButton.backColor
+        setAttributedTitle(NSMutableAttributedString.b1(string: title), for: .normal)
         addTarget(self, action:#selector(AlertButton.buttonTapped(_:)), for:.touchUpInside)
     }
     
     @objc fileprivate func buttonTapped(_ btn: AlertButton) {
-        if isDismissable || action == nil {
+        if AlertButton.isDismissable || action == nil {
            closeAction?()
         }
-        
+
         action?()
     }
 }
-    
 
