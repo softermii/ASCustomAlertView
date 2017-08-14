@@ -11,7 +11,7 @@ import UIKit
 
 
 
-class AlertController: UIViewController {
+public class AlertController: UIViewController {
     
     @IBOutlet weak var buttonsStack: UIStackView!
     @IBOutlet weak var labelsStack: UIStackView!
@@ -39,12 +39,12 @@ class AlertController: UIViewController {
         buttonsLayout = layout
     }
     
-    override func loadView() {
+    override public func loadView() {
         super.loadView()
         internalLoadViews()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
+    override public func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         unloadSubViews()
     }
@@ -222,7 +222,7 @@ class AlertController: UIViewController {
     
     //MARK: - TODO: future iterations
     
-    override func setupSpringAnimation(with layer: CALayer) {
+    override public func setupSpringAnimation(with layer: CALayer) {
         let anim             = CASpringAnimation(keyPath: "transform.rotation")
         anim.fromValue       = 0.3
         anim.toValue         = 0

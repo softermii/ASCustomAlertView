@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 
-extension NSMutableAttributedString {
+public extension NSMutableAttributedString {
     
     class func h1(string str: String?, textColor: UIColor = UIColor.asDarkGreyBlue, paragraphStyle: NSMutableParagraphStyle = NSMutableParagraphStyle.center) -> NSMutableAttributedString {
         return NSMutableAttributedString(string: str ?? "", attributes: [NSFontAttributeName: UIFont.h1Font(), NSForegroundColorAttributeName: textColor, NSParagraphStyleAttributeName: paragraphStyle])
@@ -50,7 +50,7 @@ extension NSMutableAttributedString {
 }
 
 
-extension NSMutableParagraphStyle {
+public extension NSMutableParagraphStyle {
     
     static var center: NSMutableParagraphStyle {
         let p = NSMutableParagraphStyle()
@@ -80,7 +80,7 @@ extension NSMutableParagraphStyle {
 
 
 
-extension UIFont {
+public extension UIFont {
     class func m1Font() -> UIFont       { return UIFont.systemFont(ofSize: 14, weight: UIFontWeightMedium) }
     class func m2Font() -> UIFont       { return UIFont.systemFont(ofSize: 14, weight: UIFontWeightLight)   }
     class func m3Font() -> UIFont       { return UIFont.systemFont(ofSize: 14, weight: UIFontWeightRegular) }

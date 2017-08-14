@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AlertButton : UIButton {
+public class AlertButton : UIButton {
     
     var action: (() -> Void)? = nil
     var closeAction: (() -> Void)?
@@ -40,7 +40,7 @@ class AlertButton : UIButton {
         actionInit()
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init( coder:aDecoder )
         localInit()
     }

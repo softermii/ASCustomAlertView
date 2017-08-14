@@ -10,9 +10,9 @@ import Foundation
 import UIKit
 
 
-extension UIViewController {
+public extension UIViewController {
     
-    func presentAlertController(controller: AlertController) {
+    public func presentAlertController(controller: AlertController) {
         self.present(controller, animated: true) {
             self.parent?.modalTransitionStyle = .coverVertical
             
@@ -25,7 +25,7 @@ extension UIViewController {
         }
     }
     
-    func presentPopUp(with title: NSAttributedString,
+    public func presentPopUp(with title: NSAttributedString,
                       message: NSAttributedString, image: UIImage?,
                       buttonsLayout: UILayoutConstraintAxis,
                       buttons: [AlertButton]?) {
@@ -39,7 +39,7 @@ extension UIViewController {
         presentAlertController(controller: vc)
     }
     
-    func presentInputPopUp(with title: NSAttributedString,
+    public func presentInputPopUp(with title: NSAttributedString,
                            message: NSAttributedString,
                            image: UIImage?,
                            buttonsLayout: UILayoutConstraintAxis,
@@ -57,7 +57,7 @@ extension UIViewController {
     }
     
     
-    func presentRatingPopUp(with title: NSAttributedString,
+    public func presentRatingPopUp(with title: NSAttributedString,
                            image: UIImage?,
                            buttonsLayout: UILayoutConstraintAxis,
                            buttons: [AlertButton]?,
@@ -77,7 +77,7 @@ extension UIViewController {
     
     //MARK: - TODO: future iterations
     
-    func setupSpringAnimation(with layer: CALayer) {
+   public func setupSpringAnimation(with layer: CALayer) {
         let anim             = CASpringAnimation(keyPath: "transform.rotation")
         anim.fromValue       = 0.3
         anim.toValue         = 0

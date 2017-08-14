@@ -8,14 +8,14 @@
 
 import UIKit
 
-enum TextFieldType {
+public enum TextFieldType {
     case text
     case password
     case email
 }
 
 
-class AlertTextField: TextField {
+public class AlertTextField: TextField {
     
     var action: ((_ text: String) -> Void)? = nil
 
@@ -25,7 +25,7 @@ class AlertTextField: TextField {
         localInit(background: background, placeholder: placeholder, textFieldType: textFieldType)
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init( coder:aDecoder )
         localInit()
     }
@@ -44,7 +44,7 @@ class AlertTextField: TextField {
         
     }
     
-    override func textFieldDidEndEditing(_ textField: UITextField) {
+    override public func textFieldDidEndEditing(_ textField: UITextField) {
         validate()
     }
     

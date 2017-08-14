@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension UIColor {
+public extension UIColor {
     class var asMacaroniAndCheese: UIColor {
         return UIColor(red: 242.0 / 255.0, green: 177.0 / 255.0, blue: 48.0 / 255.0, alpha: 1.0)
     }

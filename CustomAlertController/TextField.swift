@@ -8,20 +8,20 @@
 
 import UIKit
 
-enum typeTextField {
+public enum typeTextField {
     case email
     case password
     case text
 }
 
-enum validationStatus {
+public enum validationStatus {
     case wrongEmail
     case wrongPassword
     case emptyField
     case success
 }
 
-class TextField: UITextField, UITextFieldDelegate {
+public class TextField: UITextField, UITextFieldDelegate {
     
     var colorPlace = UIColor.red
     var textPlace: String?
@@ -43,7 +43,7 @@ class TextField: UITextField, UITextFieldDelegate {
         }
     }
     
-    override func draw(_ rect: CGRect) {
+    override public func draw(_ rect: CGRect) {
         let startingPoint   = CGPoint(x: rect.minX, y: rect.maxY)
         let endingPoint     = CGPoint(x: rect.maxX, y: rect.maxY)
         let path = UIBezierPath()
@@ -95,7 +95,7 @@ class TextField: UITextField, UITextFieldDelegate {
         }
     }
     
-    func textFieldDidEndEditing(_ textField: UITextField) {
+    public func textFieldDidEndEditing(_ textField: UITextField) {
         self.validate()
     }
     

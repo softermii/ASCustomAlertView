@@ -10,7 +10,7 @@ import UIKit
 import Cosmos
 
 
-class RatingView: CosmosView {
+public class RatingView: CosmosView {
     
     var action: ((_ rate: Double) -> Void)? = nil
    
@@ -19,7 +19,7 @@ class RatingView: CosmosView {
         localInit(rateText: rateText, rate: rate)
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init( coder:aDecoder )
         localInit()
     }
