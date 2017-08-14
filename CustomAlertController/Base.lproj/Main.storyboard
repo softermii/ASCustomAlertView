@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G18a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="17A330h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -22,24 +23,40 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zSl-Fw-Tzw">
-                                <rect key="frame" x="80" y="311" width="214" height="44"/>
+                                <rect key="frame" x="80" y="271" width="215" height="44"/>
                                 <color key="backgroundColor" red="0.0097463233399999998" green="0.53326022620000002" blue="0.82064771650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="fSC-4O-0IE"/>
-                                    <constraint firstAttribute="width" constant="214" id="pxj-VN-Nsf"/>
                                 </constraints>
-                                <state key="normal" title="Show error alert">
+                                <state key="normal" title="Show alert 1">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="createAlert" destination="BYZ-38-t0r" eventType="touchUpInside" id="hFO-L7-npp"/>
+                                    <action selector="createAlert" destination="BYZ-38-t0r" eventType="touchUpInside" id="kYo-mf-otz"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JA6-vY-OKe">
+                                <rect key="frame" x="80" y="339" width="215" height="44"/>
+                                <color key="backgroundColor" red="0.0097463233399999998" green="0.53326022620000002" blue="0.82064771650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="wRC-h8-6at"/>
+                                </constraints>
+                                <state key="normal" title="Show alert 2">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="createAlert2" destination="BYZ-38-t0r" eventType="touchUpInside" id="XrK-05-wFR"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="zSl-Fw-Tzw" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="P0h-5K-Yxh"/>
-                            <constraint firstItem="zSl-Fw-Tzw" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jLK-9A-gfl"/>
+                            <constraint firstItem="JA6-vY-OKe" firstAttribute="top" secondItem="zSl-Fw-Tzw" secondAttribute="bottom" constant="24" id="0MN-bk-REx"/>
+                            <constraint firstItem="JA6-vY-OKe" firstAttribute="trailing" secondItem="zSl-Fw-Tzw" secondAttribute="trailing" id="Gur-DW-Thx"/>
+                            <constraint firstItem="JA6-vY-OKe" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="64" id="apV-Pv-ZJN"/>
+                            <constraint firstItem="JA6-vY-OKe" firstAttribute="leading" secondItem="zSl-Fw-Tzw" secondAttribute="leading" id="cey-2m-D5X"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="JA6-vY-OKe" secondAttribute="bottom" constant="284" id="mWn-bU-SqR"/>
+                            <constraint firstItem="JA6-vY-OKe" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="qvr-Aa-t2K"/>
                         </constraints>
                     </view>
                 </viewController>

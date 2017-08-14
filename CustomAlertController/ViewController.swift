@@ -12,25 +12,21 @@ class ViewController: UIViewController {
 
 
     @IBAction func createAlert() {
-        
-        //buton 1
-        let button = AlertButton()
-        button.setTitle("OK", for: .normal)
+        showPopUpAction(text: "This is Header", message: "alert message should be here", buttons: [AlertButton.okButton])
+    }
+    
+    @IBAction func createAlert2() {
+        let button  = AlertButton(title: "White Text", backColor: .asCoolBlueTwo, textColor: .asWhite)
         button.action = {
-            print("ok")
+            debugPrint("Button 2 clicked")
         }
-        
-        // button 2
-        let button2 = AlertButton()
-        button2.setTitle("DISMISS", for: .normal)
-        button2.backgroundColor = UIColor.asCoral
-        button.isDismissable = true
-        
-        showAlert(with: NSAttributedString(string: "Error"),
-                         message: NSAttributedString(string: "This is error messages"),
-                         image: UIImage(named: "placeholder"),
-                         buttonsLayout: .horizontal,
-                         buttons: [button, button2]
-        )}
-}
+        showPopUpAction(text: "Header", message: "alert message should be here", buttons: [button])
+    }
 
+    
+    func showPopUpAction(text: String, message: String? = nil, buttons: [AlertButton]) {
+        presentPopUp(with: NSMutableAttributedString.h1(string: text), message: NSMutableAttributedString.m1(string: message), image: UIImage(named: "placeholder"), buttonsLayout: .horizontal, buttons: buttons)
+    }
+
+
+}

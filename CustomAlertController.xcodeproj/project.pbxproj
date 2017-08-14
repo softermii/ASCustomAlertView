@@ -15,7 +15,13 @@
 		1E17EC5A1EF3EA1000C052E9 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E17EC591EF3EA1000C052E9 /* AlertController.swift */; };
 		1E17EC5C1EF3EA6000C052E9 /* AlertButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E17EC5B1EF3EA6000C052E9 /* AlertButton.swift */; };
 		1E17EC5E1EF3EA6700C052E9 /* AlertController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E17EC5D1EF3EA6700C052E9 /* AlertController.xib */; };
+		1E9503B21F41C6FF00B8BAAC /* Extension+NSMutableAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9503B11F41C6FF00B8BAAC /* Extension+NSMutableAttributedString.swift */; };
+		1E9503B41F41C82E00B8BAAC /* AlertTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9503B31F41C82E00B8BAAC /* AlertTextField.swift */; };
+		1E9503B61F41C86700B8BAAC /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9503B51F41C86700B8BAAC /* RatingView.swift */; };
+		1E9503B81F41C8B800B8BAAC /* Extension+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9503B71F41C8B800B8BAAC /* Extension+UIViewController.swift */; };
+		1E9503BA1F41CF3300B8BAAC /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9503B91F41CF3300B8BAAC /* TextField.swift */; };
 		1EAD475F1EFA5D910005504C /* Extension+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EAD475E1EFA5D910005504C /* Extension+UIColor.swift */; };
+		F6FF323FE397CAB1E0A26CB4 /* Pods_CustomAlertController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8144512904DD03811D7B9DF5 /* Pods_CustomAlertController.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,7 +35,15 @@
 		1E17EC591EF3EA1000C052E9 /* AlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		1E17EC5B1EF3EA6000C052E9 /* AlertButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertButton.swift; sourceTree = "<group>"; };
 		1E17EC5D1EF3EA6700C052E9 /* AlertController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertController.xib; sourceTree = "<group>"; };
+		1E9503B11F41C6FF00B8BAAC /* Extension+NSMutableAttributedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+NSMutableAttributedString.swift"; sourceTree = "<group>"; };
+		1E9503B31F41C82E00B8BAAC /* AlertTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertTextField.swift; sourceTree = "<group>"; };
+		1E9503B51F41C86700B8BAAC /* RatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
+		1E9503B71F41C8B800B8BAAC /* Extension+UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+UIViewController.swift"; sourceTree = "<group>"; };
+		1E9503B91F41CF3300B8BAAC /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		1EAD475E1EFA5D910005504C /* Extension+UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+UIColor.swift"; sourceTree = "<group>"; };
+		40B75CBB4BA9FBAABC29314B /* Pods-CustomAlertController.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CustomAlertController.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CustomAlertController/Pods-CustomAlertController.debug.xcconfig"; sourceTree = "<group>"; };
+		67D9377FC6FD1F2A7DAECF9D /* Pods-CustomAlertController.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CustomAlertController.release.xcconfig"; path = "Pods/Target Support Files/Pods-CustomAlertController/Pods-CustomAlertController.release.xcconfig"; sourceTree = "<group>"; };
+		8144512904DD03811D7B9DF5 /* Pods_CustomAlertController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CustomAlertController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6FF323FE397CAB1E0A26CB4 /* Pods_CustomAlertController.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -48,6 +63,8 @@
 			children = (
 				1E17EC461EF3E9EE00C052E9 /* CustomAlertController */,
 				1E17EC451EF3E9EE00C052E9 /* Products */,
+				83EC5FD7DBCC8A9847927A01 /* Pods */,
+				9F8B83CAF0AA443F7ADDE25B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -65,8 +82,13 @@
 				1E17EC471EF3E9EE00C052E9 /* AppDelegate.swift */,
 				1E17EC491EF3E9EE00C052E9 /* ViewController.swift */,
 				1E17EC591EF3EA1000C052E9 /* AlertController.swift */,
+				1E9503B51F41C86700B8BAAC /* RatingView.swift */,
+				1E9503B31F41C82E00B8BAAC /* AlertTextField.swift */,
+				1E9503B91F41CF3300B8BAAC /* TextField.swift */,
 				1E17EC5B1EF3EA6000C052E9 /* AlertButton.swift */,
+				1E9503B71F41C8B800B8BAAC /* Extension+UIViewController.swift */,
 				1EAD475E1EFA5D910005504C /* Extension+UIColor.swift */,
+				1E9503B11F41C6FF00B8BAAC /* Extension+NSMutableAttributedString.swift */,
 				1E17EC5D1EF3EA6700C052E9 /* AlertController.xib */,
 				1E17EC4B1EF3E9EE00C052E9 /* Main.storyboard */,
 				1E17EC4E1EF3E9EE00C052E9 /* Assets.xcassets */,
@@ -76,6 +98,23 @@
 			path = CustomAlertController;
 			sourceTree = "<group>";
 		};
+		83EC5FD7DBCC8A9847927A01 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				40B75CBB4BA9FBAABC29314B /* Pods-CustomAlertController.debug.xcconfig */,
+				67D9377FC6FD1F2A7DAECF9D /* Pods-CustomAlertController.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		9F8B83CAF0AA443F7ADDE25B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8144512904DD03811D7B9DF5 /* Pods_CustomAlertController.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -83,9 +122,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1E17EC561EF3E9EE00C052E9 /* Build configuration list for PBXNativeTarget "CustomAlertController" */;
 			buildPhases = (
+				2CE3984C5E4E478E058B9F00 /* [CP] Check Pods Manifest.lock */,
 				1E17EC401EF3E9EE00C052E9 /* Sources */,
 				1E17EC411EF3E9EE00C052E9 /* Frameworks */,
 				1E17EC421EF3E9EE00C052E9 /* Resources */,
+				121D38ECC1C3E2E5FA3BF26F /* [CP] Embed Pods Frameworks */,
+				017529EEE5392BF0F0260C3B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -145,13 +187,72 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		017529EEE5392BF0F0260C3B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CustomAlertController/Pods-CustomAlertController-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		121D38ECC1C3E2E5FA3BF26F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-CustomAlertController/Pods-CustomAlertController-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Cosmos/Cosmos.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cosmos.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CustomAlertController/Pods-CustomAlertController-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2CE3984C5E4E478E058B9F00 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CustomAlertController-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		1E17EC401EF3E9EE00C052E9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E9503B21F41C6FF00B8BAAC /* Extension+NSMutableAttributedString.swift in Sources */,
 				1E17EC5C1EF3EA6000C052E9 /* AlertButton.swift in Sources */,
 				1EAD475F1EFA5D910005504C /* Extension+UIColor.swift in Sources */,
+				1E9503BA1F41CF3300B8BAAC /* TextField.swift in Sources */,
+				1E9503B61F41C86700B8BAAC /* RatingView.swift in Sources */,
+				1E9503B41F41C82E00B8BAAC /* AlertTextField.swift in Sources */,
+				1E9503B81F41C8B800B8BAAC /* Extension+UIViewController.swift in Sources */,
 				1E17EC4A1EF3E9EE00C052E9 /* ViewController.swift in Sources */,
 				1E17EC481EF3E9EE00C052E9 /* AppDelegate.swift in Sources */,
 				1E17EC5A1EF3EA1000C052E9 /* AlertController.swift in Sources */,
@@ -275,6 +376,7 @@
 		};
 		1E17EC571EF3E9EE00C052E9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 40B75CBB4BA9FBAABC29314B /* Pods-CustomAlertController.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = S9676DF7C4;
@@ -289,6 +391,7 @@
 		};
 		1E17EC581EF3E9EE00C052E9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 67D9377FC6FD1F2A7DAECF9D /* Pods-CustomAlertController.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = S9676DF7C4;
