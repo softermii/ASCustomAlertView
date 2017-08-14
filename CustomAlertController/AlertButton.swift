@@ -8,18 +8,29 @@
 
 import UIKit
 
-
 class AlertButton : UIButton {
     
     var action: (() -> Void)? = nil
     var closeAction: (() -> Void)?
 
-    public var backColor           = UIColor.asCoolBlue
+    public var backColor           = UIColor.clear
     public var isDismissable: Bool = true
     
-    init() {
+    public static var okButton: AlertButton = {
+        let button = AlertButton(title: "OK")
+        button.action = nil
+        return button
+    }()
+    
+    public static var cancelButton: AlertButton = {
+        let button = AlertButton(title: "Cancel")
+        button.action = nil
+        return button
+    }()
+
+    init(title: String = "OK") {
         super.init(frame:.zero)
-        localInit()
+        localInit(title: title)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -27,8 +38,9 @@ class AlertButton : UIButton {
         localInit()
     }
     
-    private func localInit() {
+    private func localInit(title: String = "OK") {
         backgroundColor = backColor
+        setAttributedTitle(NSMutableAttributedString.b1(string: title), for: .normal)
         addTarget(self, action:#selector(AlertButton.buttonTapped(_:)), for:.touchUpInside)
     }
     
@@ -40,5 +52,4 @@ class AlertButton : UIButton {
         action?()
     }
 }
-    
 

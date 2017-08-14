@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G23a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AlertController" customModule="CustomAlertController" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AlertController" customModule="Floorwatch" customModuleProvider="target">
             <connections>
                 <outlet property="buttonsStack" destination="Cmi-M1-4tT" id="lXG-Se-rSC"/>
                 <outlet property="containerView" destination="fRe-vj-gOo" id="gSV-2q-MEd"/>
+                <outlet property="fieldsStack" destination="LJn-Bp-Ayy" id="E7U-S6-nL5"/>
                 <outlet property="imagesStack" destination="9DM-mh-eCX" id="6Ca-Qa-HOr"/>
                 <outlet property="labelsStack" destination="U7v-ZX-mT7" id="tPC-A3-rC5"/>
                 <outlet property="view" destination="iN0-l3-epB" id="chU-o4-yob"/>
@@ -23,7 +23,7 @@
             <rect key="frame" x="0.0" y="0.0" width="488" height="367"/>
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
             <subviews>
-                <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YDX-lD-YMV">
+                <visualEffectView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YDX-lD-YMV">
                     <rect key="frame" x="0.0" y="0.0" width="488" height="367"/>
                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="7i8-R8-Cwm">
                         <rect key="frame" x="0.0" y="0.0" width="488" height="367"/>
@@ -32,40 +32,40 @@
                     <blurEffect style="light"/>
                 </visualEffectView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fRe-vj-gOo">
-                    <rect key="frame" x="94" y="0.5" width="300" height="366"/>
+                    <rect key="frame" x="99" y="-133.5" width="290" height="634"/>
                     <subviews>
-                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ayf-PP-A2y">
-                            <rect key="frame" x="0.0" y="0.0" width="300" height="366"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ayf-PP-A2y">
+                            <rect key="frame" x="16" y="16" width="258" height="602"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9DM-mh-eCX">
-                                    <rect key="frame" x="8" y="8" width="284" height="80"/>
+                                    <rect key="frame" x="6" y="6" width="246" height="80"/>
                                     <constraints>
                                         <constraint firstAttribute="height" relation="lessThanOrEqual" constant="80" id="rxQ-rk-OhX"/>
                                     </constraints>
                                 </stackView>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="U7v-ZX-mT7">
-                                    <rect key="frame" x="8" y="98" width="284" height="200"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="284" id="U1f-tw-6nD"/>
-                                    </constraints>
+                                    <rect key="frame" x="6" y="106" width="246" height="200"/>
+                                </stackView>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="LJn-Bp-Ayy">
+                                    <rect key="frame" x="6" y="326" width="246" height="200"/>
                                 </stackView>
                                 <stackView contentMode="scaleToFill" distribution="fillEqually" alignment="bottom" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Cmi-M1-4tT">
-                                    <rect key="frame" x="8" y="308" width="284" height="50"/>
+                                    <rect key="frame" x="6" y="546" width="246" height="50"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </stackView>
                             </subviews>
-                            <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                            <edgeInsets key="layoutMargins" top="6" left="6" bottom="6" right="6"/>
                         </stackView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="300" id="05e-NA-7gs"/>
-                        <constraint firstItem="ayf-PP-A2y" firstAttribute="leading" secondItem="fRe-vj-gOo" secondAttribute="leading" id="6de-Yd-YCA"/>
+                        <constraint firstAttribute="width" constant="290" id="05e-NA-7gs"/>
+                        <constraint firstItem="ayf-PP-A2y" firstAttribute="leading" secondItem="fRe-vj-gOo" secondAttribute="leading" constant="16" id="6de-Yd-YCA"/>
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" id="EnJ-1H-C2A"/>
-                        <constraint firstAttribute="bottom" secondItem="ayf-PP-A2y" secondAttribute="bottom" id="ISg-3E-a7j"/>
-                        <constraint firstItem="ayf-PP-A2y" firstAttribute="top" secondItem="fRe-vj-gOo" secondAttribute="top" id="Kur-dm-6pC"/>
+                        <constraint firstAttribute="bottom" secondItem="ayf-PP-A2y" secondAttribute="bottom" constant="16" id="ISg-3E-a7j"/>
+                        <constraint firstItem="ayf-PP-A2y" firstAttribute="top" secondItem="fRe-vj-gOo" secondAttribute="top" constant="16" id="Kur-dm-6pC"/>
                         <constraint firstAttribute="height" priority="250" id="kIr-fr-zvL"/>
-                        <constraint firstAttribute="trailing" secondItem="ayf-PP-A2y" secondAttribute="trailing" id="ofx-JS-fdd"/>
+                        <constraint firstAttribute="trailing" secondItem="ayf-PP-A2y" secondAttribute="trailing" constant="16" id="ofx-JS-fdd"/>
                     </constraints>
                     <variation key="heightClass=regular-widthClass=regular">
                         <mask key="constraints">
