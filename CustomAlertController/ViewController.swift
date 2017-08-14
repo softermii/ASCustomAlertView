@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func createAlert2() {
-        let button  = AlertButton(title: "White Text", backColor: .asCoolBlueTwo, textColor: .asWhite)
+        let button = AlertButton(title: "White Text", backColor: .asCoolBlueTwo, textColor: .asWhite)
         button.action = {
             debugPrint("Button 2 clicked")
         }
