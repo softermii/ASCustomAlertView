@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
   s.source                      = { git: "https://github.com/softermii/ASCustomAlertView.git", tag: "v#{s.version}" }
   s.platform                    = :ios, '9.0'
   s.requires_arc                = true
-  s.source_files                = 'Pods/*.{swift, xib}', '*.xib'
+  s.source_files                = 'Source/*.{swift, xib}', '*.xib'
   s.ios.frameworks              = %w{ UIKit }
   s.ios.deployment_target       = '9.0'
   s.dependency 'Cosmos'
