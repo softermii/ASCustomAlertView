@@ -16,17 +16,9 @@ public class AlertButton : UIButton {
     static public var backColor           = UIColor.clear
     static public var isDismissable: Bool = true
     
-    public static var okButton: AlertButton = {
-        let button = AlertButton(title: "OK")
-        button.action = nil
-        return button
-    }()
-    
-    public static var cancelButton: AlertButton = {
-        let button = AlertButton(title: "Cancel")
-        button.action = nil
-        return button
-    }()
+    public static var okButton: AlertButton = { return  AlertButton(title: "OK") }()
+    public static var cancelButton: AlertButton = { return AlertButton(title: "Cancel") }()
+
 
     init(title: String = "OK") {
         super.init(frame:.zero)
@@ -53,7 +45,7 @@ public class AlertButton : UIButton {
     private func localInit(title: String = "OK") {
         backgroundColor = AlertButton.backColor
         setAttributedTitle(NSMutableAttributedString.b1(string: title), for: .normal)
-        addTarget(self, action:#selector(AlertButton.buttonTapped(_:)), for:.touchUpInside)
+        actionInit()
     }
     
     @objc fileprivate func buttonTapped(_ btn: AlertButton) {
