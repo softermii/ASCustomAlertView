@@ -13,6 +13,12 @@ pod 'ASCustomAlertView'
 ~~~
 
 ### Usage:
+
+```swift 
+import ASCustomAlertView
+
+```
+
  ```swift
  
     @IBAction func createAlert() {
