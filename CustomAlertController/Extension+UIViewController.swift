@@ -89,3 +89,16 @@ public extension UIViewController {
     }
     
 }
+
+
+public extension NSObject {
+    
+    var className: String {
+        return NSStringFromClass(self as! AnyClass).components(separatedBy: ".").last ?? ""
+    }
+    
+    public class var className: String {
+        return NSStringFromClass(self).components(separatedBy: ".").last ?? ""
+    }
+}
+

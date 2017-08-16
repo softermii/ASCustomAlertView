@@ -31,14 +31,14 @@ public class AlertController: UIViewController {
 
     convenience init() {
         let bundle = Bundle(for: AlertController.self)
-        self.init(nibName: String.init(describing: AlertController.self), bundle: bundle)
+        self.init(nibName: AlertController.className, bundle: bundle)
         self.modalPresentationStyle = .overFullScreen
         self.modalTransitionStyle = .coverVertical
     }
     
     convenience init(layout: UILayoutConstraintAxis) {
         let bundle = Bundle(for: AlertController.self)
-        self.init(nibName: String.init(describing: AlertController.self), bundle: bundle)
+        self.init(nibName: AlertController.className, bundle: bundle)
         self.modalPresentationStyle = .overFullScreen
         self.modalTransitionStyle = .coverVertical
         buttonsLayout = layout
