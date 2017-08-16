@@ -17,10 +17,10 @@ public enum TextFieldType {
 
 public class AlertTextField: TextField {
     
-    var action: ((_ text: String) -> Void)? = nil
+    public var action: ((_ text: String) -> Void)? = nil
 
 
-    init(background: UIColor = .clear, placeholder: String = "Placeholder", textFieldType: typeTextField = .text) {
+    public init(background: UIColor = .clear, placeholder: String = "Placeholder", textFieldType: typeTextField = .text) {
         super.init(frame:.zero)
         localInit(background: background, placeholder: placeholder, textFieldType: textFieldType)
     }
