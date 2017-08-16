@@ -25,18 +25,16 @@ public class AlertController: UIViewController {
     static public var buttonDefaultCornerRadius = CGFloat(4)
     static public var animationDuration         = TimeInterval(0.2)
     static public var maximumImageHeight        = CGFloat(80)
-    
-    
-   
 
-    convenience init() {
+
+    convenience public init() {
         let bundle = Bundle(for: AlertController.self)
         self.init(nibName: AlertController.className, bundle: bundle)
         self.modalPresentationStyle = .overFullScreen
         self.modalTransitionStyle = .coverVertical
     }
     
-    convenience init(layout: UILayoutConstraintAxis) {
+    convenience public init(layout: UILayoutConstraintAxis) {
         let bundle = Bundle(for: AlertController.self)
         self.init(nibName: AlertController.className, bundle: bundle)
         self.modalPresentationStyle = .overFullScreen

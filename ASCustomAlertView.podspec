@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name                        = "ASCustomAlertView"
-  s.version                     = '1.0.3'
-  s.summary                     = "This is custom alert notification accepts buttons array witn own handlers"
+  s.version                     = '1.0.3.0'
+  s.summary                     = "This is custom alert notification accepts buttons array with own handlers"
   s.homepage                    = 'http://softermii.com'
   s.social_media_url            = 'http://twitter.com/anton__dev'
   s.documentation_url           = 'http://softermii.com'
@@ -12,11 +12,7 @@ Pod::Spec.new do |s|
   s.platform                    = :ios, '9.0'
   s.requires_arc                = true
   s.source_files                = 'Source/*.{swift, xib}', '*.xib'
-  s.resource_bundles = {
-    'ASCustomAlertView' => [
-        'Source/*.xib'
-    ]
-  }
+  s.resource_bundles = { 'Resources' => ['Source/*.xib'] }
   s.ios.frameworks              = %w{ UIKit }
   s.ios.deployment_target       = '9.0'
   s.dependency 'Cosmos'
