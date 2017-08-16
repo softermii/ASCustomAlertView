@@ -10,7 +10,7 @@ import UIKit
 
 public class AlertButton : UIButton {
     
-    var action: (() -> Void)? = nil
+    public var action: (() -> Void)? = nil
     var closeAction: (() -> Void)?
 
     static public var backColor           = UIColor.clear
@@ -20,12 +20,12 @@ public class AlertButton : UIButton {
     public static var cancelButton: AlertButton = { return AlertButton(title: "Cancel") }()
 
 
-    init(title: String = "OK") {
+    public init(title: String = "OK") {
         super.init(frame:.zero)
         localInit(title: title)
     }
     
-    convenience init(title: String? = "OK", backColor: UIColor? = AlertButton.backColor, textColor: UIColor? = .white) {
+    convenience public init(title: String? = "OK", backColor: UIColor? = AlertButton.backColor, textColor: UIColor? = .white) {
         self.init()
         backgroundColor = backColor
         setAttributedTitle(NSMutableAttributedString.b2(string: title), for: .normal)

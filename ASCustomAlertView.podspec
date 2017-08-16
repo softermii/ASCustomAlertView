@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name                        = "ASCustomAlertView"
-  s.version                     = '1.0.1'
+  s.version                     = '1.0.2'
   s.summary                     = "This is custom alert notification accepts buttons array witn own handlers"
   s.homepage                    = 'http://softermii.com'
   s.social_media_url            = 'http://twitter.com/anton__dev'
