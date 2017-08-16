@@ -30,13 +30,13 @@ public class AlertController: UIViewController {
    
 
     convenience init() {
-        self.init(nibName: String.init(describing: AlertController.self), bundle: bundle)
+        self.init(nibName: String.init(describing: AlertController.self), bundle: self.bundle)
         self.modalPresentationStyle = .overFullScreen
         self.modalTransitionStyle = .coverVertical
     }
     
     convenience init(layout: UILayoutConstraintAxis) {
-        self.init(nibName: String.init(describing: AlertController.self), bundle: bundle)
+        self.init(nibName: String.init(describing: AlertController.self), bundle: self.bundle)
         self.modalPresentationStyle = .overFullScreen
         self.modalTransitionStyle = .coverVertical
         buttonsLayout = layout
